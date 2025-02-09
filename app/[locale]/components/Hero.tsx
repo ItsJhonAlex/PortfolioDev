@@ -1,9 +1,9 @@
 "use client"
 
 import Image from "next/image"
-import { GitlabIcon as GitHub, Linkedin, Mail, ArrowDown } from "lucide-react"
+import { GitlabIcon as GitHub, Linkedin, Mail, ArrowDown, Download } from "lucide-react"
 import { motion } from "framer-motion"
-import { useTranslations } from "next-intl"
+import { useTranslations, useLocale } from "next-intl"
 
 const CodePattern = () => (
   <svg className="absolute inset-0 w-full h-full opacity-5" xmlns="http://www.w3.org/2000/svg">
@@ -24,6 +24,10 @@ const CodePattern = () => (
 
 export default function Hero() {
   const t = useTranslations('hero');
+  const locale = useLocale();
+  
+  const cvPath = locale === 'es' ? '/cv-es.pdf' : '/cv-en.pdf';
+
   return (
     <section
       id="hero"
@@ -79,15 +83,27 @@ export default function Hero() {
                 <Mail className="w-6 h-6 text-gray-700 dark:text-gray-300" />
               </a>
             </div>
-            <motion.button
-              onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {t('more')}
-              <ArrowDown className="w-4 h-4" />
-            </motion.button>
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <motion.button
+                onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {t('more')}
+                <ArrowDown className="w-4 h-4" />
+              </motion.button>
+              <motion.a
+                href={cvPath}
+                download
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-gray-800 text-gray-800 dark:text-white border-2 border-gray-200 dark:border-gray-700 rounded-full hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {t('downloadCV')}
+                <Download className="w-4 h-4" />
+              </motion.a>
+            </div>
           </motion.div>
 
           <motion.div
@@ -99,14 +115,7 @@ export default function Hero() {
             <div className="relative w-72 h-72 md:w-96 md:h-96 mx-auto">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-600 dark:to-purple-600 rounded-3xl transform rotate-6 opacity-50"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 dark:from-purple-600 dark:to-blue-600 rounded-3xl transform -rotate-6 opacity-50"></div>
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0812.jpg-jQSxWaycmtpBR7IUnsPV8C8L3vlrQ2.jpeg"
-                  alt="Usman Zafar"
-                  fill
-                  className="object-cover"
-                  priority
-                />
+              <div className="relative w-full h-full rounded-3xl overflow-hidden">
               </div>
             </div>
           </motion.div>
@@ -125,4 +134,3 @@ export default function Hero() {
     </section>
   )
 }
-

@@ -24,7 +24,8 @@
     "title": "Jonathan Alejandro",
     "role": "Full Stack Developer",
     "description": "Crafting exceptional digital experiences with modern web technologies. Specialized in building scalable full-stack applications using MongoDB, Express.js, React, and Node.js.",
-    "more": "Read More"
+    "more": "Read More",
+    "downloadCV": "Download CV"
   },
   "about": {
     "title": "About Me",
