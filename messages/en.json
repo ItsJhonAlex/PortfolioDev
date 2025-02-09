@@ -205,9 +205,12 @@
     "description": "Portfolio of Jonathan Alejandro, a Full Stack Developer specializing in full-stack web applications."
   },
   "contact": {
-    "title": "Get in Touch",
+    "info": "Info",
+    "location": "La Habana",
+    "title": "Contact",
     "name": "Name",
     "email": "Email",
+    "subject": "Subject",
     "message": "Message",
     "send": "Send Message"
   }
