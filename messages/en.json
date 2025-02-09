@@ -1,0 +1,213 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "services": "Services",
+    "projects": "Projects",
+    "collaborations": "Collaborations",
+    "education": "Education",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Welcome to my Portfolio",
+    "description": "I'm a software developer passionate about creating amazing web experiences"
+  },
+  "hero": {
+    "title": "Jonathan Alejandro",
+    "role": "Full Stack Developer",
+    "description": "Crafting exceptional digital experiences with modern web technologies. Specialized in building scalable full-stack applications using MongoDB, Express.js, React, and Node.js.",
+    "more": "Read More"
+  },
+  "about": {
+    "title": "About Me",
+    "description1": "As a passionate MERN Stack Developer, I specialize in building robust and scalable web applications. With a strong foundation in MongoDB, Express.js, React, and Node.js, I create seamless full-stack solutions that deliver exceptional user experiences.",
+    "description2": "My expertise extends to modern frameworks like Next.js and state management tools like Redux. I'm committed to writing clean, efficient code and staying up-to-date with the latest industry trends to deliver cutting-edge solutions for my clients.",
+    "skills": {
+      "frontend": {
+        "title": "Frontend",
+        "description": "React, Next.js, Redux"
+      },
+      "backend": {
+        "title": "Backend",
+        "description": "Node.js, Express, Fastify"
+      },
+      "database": {
+        "title": "Database",
+        "description": "MongoDB, Mongoose"
+      },
+      "performance": {
+        "title": "Performance",
+        "description": "Optimization, Caching"
+      }
+    }
+  },
+  "experience": {
+    "title": "Experiences",
+    "company0": "Freelance",
+    "location0": "Remote",
+    "period0": "2020 - Present",
+    "role0": "Full Stack Developer",
+    "responsibilities0": [
+      "Developing custom web applications for international clients",
+      "Building responsive and scalable frontend interfaces with React",
+      "Implementing secure backend systems with Node.js and Express",
+      "Creating RESTful APIs and managing MongoDB databases",
+      "Collaborating with clients to deliver high-quality solutions"
+    ]
+  },
+  "skills": {
+    "title": "Skills",
+    "frontend": {
+      "name": "Frontend Development",
+      "tech": "React.js, Next.js",
+      "description": "Building responsive and interactive user interfaces with modern React features and Next.js for optimal performance."
+    },
+    "backend": {
+      "name": "Backend Development",
+      "tech": "Node.js, Express, Fastify",
+      "description": "Creating robust server-side applications with focus on scalability and clean architecture."
+    },
+    "database": {
+      "name": "Database Management",
+      "tech": "MongoDB, Mongoose",
+      "description": "Designing and implementing efficient database schemas and queries for optimal data management."
+    },
+    "ui": {
+      "name": "UI/UX Design",
+      "tech": "Tailwind CSS, Material UI",
+      "description": "Crafting beautiful and intuitive user interfaces with modern design principles and frameworks."
+    },
+    "git": {
+      "name": "Version Control",
+      "tech": "Git, GitHub",
+      "description": "Managing code versions efficiently with Git and collaborating effectively through GitHub."
+    },
+    "typescript": {
+      "name": "TypeScript",
+      "tech": "TypeScript, JavaScript",
+      "description": "Writing type-safe code for better maintainability and developer experience."
+    },
+    "state": {
+      "name": "State Management",
+      "tech": "Redux, Context API",
+      "description": "Managing complex application state with modern state management solutions."
+    },
+    "api": {
+      "name": "API Development",
+      "tech": "REST, GraphQL",
+      "description": "Designing and implementing efficient APIs for seamless data communication."
+    },
+    "performance": {
+      "name": "Web Performance",
+      "tech": "Optimization, SEO",
+      "description": "Optimizing web applications for speed, accessibility, and search engine visibility."
+    },
+    "agile": {
+      "name": "Agile Methodologies",
+      "tech": "Scrum, Kanban",
+      "description": "Working efficiently in agile environments with focus on continuous delivery."
+    }
+  },
+  "services": {
+    "title": "My Services",
+    "web": {
+      "title": "Web Application Development",
+      "description": "Custom web applications built with React and Next.js, focusing on performance and user experience."
+    },
+    "backend": {
+      "title": "Backend Development",
+      "description": "Robust and scalable server-side solutions using Node.js, Express, and Fastify."
+    },
+    "api": {
+      "title": "API Development",
+      "description": "RESTful and GraphQL API design and implementation for seamless data flow between client and server."
+    },
+    "responsive": {
+      "title": "Responsive Design",
+      "description": "Mobile-first, responsive web designs that work flawlessly across all devices and screen sizes."
+    }
+  },
+  "projects": {
+    "title": "My Projects",
+    "viewProject": "View Project"
+  },
+  "personalProjects": {
+    "title": "Personal Projects",
+    "github": "GitHub",
+    "liveDemo": "Live Demo",
+    "projects": {
+      "ecommerce": {
+        "title": "E-commerce Platform",
+        "description": "A full-stack e-commerce solution with React, Node.js, and MongoDB.",
+        "tags": ["React", "Node.js", "MongoDB", "Express"]
+      },
+      "taskManager": {
+        "title": "Task Management App",
+        "description": "A Trello-like task management application with drag-and-drop functionality.",
+        "tags": ["React", "Redux", "Node.js", "Socket.io"]
+      },
+      "weather": {
+        "title": "Weather Dashboard",
+        "description": "A weather dashboard that displays current and forecasted weather data.",
+        "tags": ["React", "OpenWeather API", "Chart.js"]
+      }
+    }
+  },
+  "collaborations": {
+    "title": "Collaborations",
+    "viewProject": "View Project",
+    "projects": {
+      "openSource": {
+        "title": "Open Source Library",
+        "description": "Contributed to a popular open-source React component library.",
+        "role": "Contributor",
+        "date": "2023"
+      },
+      "hackathon": {
+        "title": "Community Hackathon Project",
+        "description": "Collaborated on a web app for local community engagement during a hackathon.",
+        "role": "Frontend Developer",
+        "date": "2022"
+      },
+      "blog": {
+        "title": "Tech Blog",
+        "description": "Co-authored technical articles on modern web development practices.",
+        "role": "Technical Writer",
+        "date": "2021 - Present"
+      }
+    }
+  },
+  "education": {
+    "title": "Education",
+    "keyAchievements": "Key Achievements",
+    "degree": {
+      "title": "Bachelor's Degree in Computer Science",
+      "institution": "GC University Faisalabad",
+      "period": "2018 – 2022",
+      "achievements": [
+        "Graduated with honors",
+        "Specialized in Web Technologies and Artificial Intelligence",
+        "Completed capstone project on 'Intelligent Web Application for Healthcare'"
+      ]
+    }
+  },
+  "metadata": {
+    "title": "Jonathan Alejandro - Full Stack Developer",
+    "description": "Portfolio of Jonathan Alejandro, a Full Stack Developer specializing in full-stack web applications."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message"
+  }
+}

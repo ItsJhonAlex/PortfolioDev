@@ -1,0 +1,220 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre Mí",
+    "experience": "Experiencia",
+    "skills": "Habilidades",
+    "services": "Servicios",
+    "projects": "Proyectos",
+    "collaborations": "Colaboraciones",
+    "education": "Educación",
+    "contact": "Contacto"
+  },
+  "metadata": {
+    "title": "Jonathan Alejandro - Desarrollador Full Stack",
+    "description": "Portafolio de Jonathan Alejandro, un desarrollador Full Stack especializado en aplicaciones web full-stack."
+  },
+  "home": {
+    "title": "Bienvenido a mi Portafolio",
+    "description": "Soy un desarrollador de software apasionado por crear experiencias web increíbles"
+  },
+  "hero": {
+    "title": "Jonathan Alejandro",
+    "role": "Desarrollador Full Stack",
+    "description": "Creando experiencias digitales excepcionales con tecnologías web modernas. Especializado en construir aplicaciones full-stack escalables utilizando MongoDB, Express.js, React y Node.js.",
+    "more": "Leer más"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "description1": "Como desarrollador MERN Stack apasionado, me especializo en construir aplicaciones web robustas y escalables. Con una sólida base en MongoDB, Express.js, React y Node.js, creo soluciones full-stack perfectas que brindan experiencias de usuario excepcionales.",
+    "description2": "Mi experiencia se extiende a frameworks modernos como Next.js y herramientas de gestión de estado como Redux. Estoy comprometido con escribir código limpio y eficiente, manteniéndome al día con las últimas tendencias de la industria para ofrecer soluciones de vanguardia a mis clientes.",
+    "skills": {
+      "frontend": {
+        "title": "Frontend",
+        "description": "React, Next.js, Redux"
+      },
+      "backend": {
+        "title": "Backend",
+        "description": "Node.js, Express, Fastify"
+      },
+      "database": {
+        "title": "Base de Datos",
+        "description": "MongoDB, Mongoose"
+      },
+      "performance": {
+        "title": "Rendimiento",
+        "description": "Optimización, Caché"
+      }
+    }
+  },
+  "education": {
+    "title": "Educación",
+    "keyAchievements": "Logros Principales",
+    "degree": {
+      "title": "Licenciatura en Ciencias de la Computación",
+      "institution": "GC University Faisalabad",
+      "period": "2018 – 2022",
+      "achievements": [
+        "Graduado con honores",
+        "Especializado en Tecnologías Web e Inteligencia Artificial",
+        "Proyecto final sobre 'Aplicación Web Inteligente para la Salud'"
+      ]
+    }
+  },
+  "experience": {
+    "title": "Experiencias",
+    "company0": "Freelance",
+    "location0": "Remoto",
+    "period0": "2020 - Presente",
+    "role0": "Desarrollador Full Stack",
+    "responsibilities0": [
+      "Desarrollo de aplicaciones web personalizadas para clientes internacionales",
+      "Construcción de interfaces frontend responsivas y escalables con React",
+      "Implementación de sistemas backend seguros con Node.js y Express",
+      "Creación de APIs RESTful y gestión de bases de datos MongoDB",
+      "Colaboración con clientes para entregar soluciones de alta calidad"
+    ]
+  },
+
+  "skills": {
+    "title": "Habilidades",
+    "frontend": {
+      "name": "Desarrollo Frontend",
+      "tech": "React.js, Next.js",
+      "description": "Creación de interfaces de usuario interactivas y responsivas con características modernas de React y Next.js para un rendimiento óptimo."
+    },
+    "backend": {
+      "name": "Desarrollo Backend",
+      "tech": "Node.js, Express, Fastify",
+      "description": "Creación de aplicaciones servidor robustas y escalables con enfoque en la escalabilidad y la arquitectura limpia."
+    },
+    "database": {
+      "name": "Gestión de Base de Datos",
+      "tech": "MongoDB, Mongoose",
+      "description": "Diseño e implementación de schemas de base de datos y consultas eficientes para una gestión óptima de datos."
+    },
+    "ui": {
+      "name": "Diseño de UI/UX",
+      "tech": "Tailwind CSS, Material UI",
+      "description": "Creación de interfaces de usuario intuitivas y hermosas con principios de diseño modernos y frameworks."
+    },
+    "git": {
+      "name": "Control de Versiones",
+      "tech": "Git, GitHub",
+      "description": "Gestión de versiones de código de manera eficiente con Git y colaboración efectiva a través de GitHub."
+    },
+    "typescript": {
+      "name": "TypeScript",
+      "tech": "TypeScript, JavaScript",
+      "description": "Escritura de código seguro y escalable para una mejor experiencia de desarrollo y mantenimiento."
+    },
+    "state": {
+      "name": "Gestión de Estado",
+      "tech": "Redux, Context API",
+      "description": "Gestión de estado de aplicaciones complejas con soluciones de gestión de estado modernas."
+    },
+    "api": {
+      "name": "Desarrollo de API",
+      "tech": "REST, GraphQL",
+      "description": "Diseño e implementación de APIs eficientes para una comunicación de datos sin interrupciones."
+    },
+    "performance": {
+      "name": "Rendimiento Web",
+      "tech": "Optimización, SEO",
+      "description": "Optimización de aplicaciones web para la velocidad, accesibilidad y visibilidad en los motores de búsqueda."
+    },
+    "agile": {
+      "name": "Metodologías Ágiles",
+      "tech": "Scrum, Kanban",
+      "description": "Trabajo eficiente en entornos ágiles con enfoque en la entrega continua."
+    }
+  },
+
+  "services": {
+    "title": "Mis Servicios",
+    "web": {
+      "title": "Desarrollo de Aplicaciones Web",
+      "description": "Aplicaciones web personalizadas construidas con React y Next.js, enfocadas en el rendimiento y la experiencia del usuario."
+    },
+    "backend": {
+      "title": "Desarrollo Backend",
+      "description": "Soluciones robustas y escalables del lado del servidor utilizando Node.js, Express y Fastify."
+    },
+    "api": {
+      "title": "Desarrollo de APIs",
+      "description": "Diseño e implementación de APIs RESTful y GraphQL para un flujo de datos fluido entre cliente y servidor."
+    },
+    "responsive": {
+      "title": "Diseño Responsivo",
+      "description": "Diseños web mobile-first y responsivos que funcionan perfectamente en todos los dispositivos y tamaños de pantalla."
+    }
+  },
+
+  "projects": {
+    "title": "Mis Proyectos",
+    "viewProject": "Ver Proyecto"
+  },
+  "personalProjects": {
+    "title": "Proyectos Personales",
+    "github": "GitHub",
+    "liveDemo": "Demo en Vivo",
+    "projects": {
+      "ecommerce": {
+        "title": "Plataforma de Comercio Electrónico",
+        "description": "Una solución completa de comercio electrónico con React, Node.js y MongoDB.",
+        "tags": ["React", "Node.js", "MongoDB", "Express"]
+      },
+      "taskManager": {
+        "title": "App de Gestión de Tareas",
+        "description": "Una aplicación de gestión de tareas estilo Trello con funcionalidad de arrastrar y soltar.",
+        "tags": ["React", "Redux", "Node.js", "Socket.io"]
+      },
+      "weather": {
+        "title": "Panel del Clima",
+        "description": "Un panel que muestra datos del clima actual y pronóstico.",
+        "tags": ["React", "OpenWeather API", "Chart.js"]
+      }
+    }
+  },
+  "collaborations": {
+    "title": "Colaboraciones",
+    "viewProject": "Ver Proyecto",
+    "projects": {
+      "openSource": {
+        "title": "Librería de Código Abierto",
+        "description": "Contribuí a una popular librería de componentes React de código abierto.",
+        "role": "Colaborador",
+        "date": "2023"
+      },
+      "hackathon": {
+        "title": "Proyecto Hackathon Comunitario",
+        "description": "Colaboré en una aplicación web para participación comunitaria local durante un hackathon.",
+        "role": "Desarrollador Frontend",
+        "date": "2022"
+      },
+      "blog": {
+        "title": "Blog Técnico",
+        "description": "Co-autor de artículos técnicos sobre prácticas modernas de desarrollo web.",
+        "role": "Escritor Técnico",
+        "date": "2021 - Presente"
+      }
+    }
+  },
+  
+  "contact": {
+    "info": "Información",
+    "location": "La Habana",
+    "title": "Contacto",
+    "name": "Nombre",
+    "email": "Correo",
+    "subject": "Asunto",
+    "message": "Mensaje",
+    "send": "Enviar Mensaje"
+  }
+}
