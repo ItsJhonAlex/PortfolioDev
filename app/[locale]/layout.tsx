@@ -1,20 +1,25 @@
 import {useMessages} from 'next-intl';
 import {notFound} from 'next/navigation';
-import { Metadata } from 'next';
+import {Metadata} from 'next';
 import Providers from './components/Providers';
-import { Inter } from "next/font/google"
+import {Inter} from "next/font/google"
+import {locales} from '@/config';
+import {setRequestLocale} from 'next-intl/server';
 
 const inter = Inter({ subsets: ["latin"] })
 
+type Props = {
+  children: React.ReactNode;
+  params: { locale: string };
+};
+
 export function generateStaticParams() {
-  return [{locale: 'en'}, {locale: 'es'}];
+  return locales.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
   params: { locale }
-}: {
-  params: { locale: string }
-}): Promise<Metadata> {
+}: Props): Promise<Metadata> {
   let messages;
   try {
     messages = (await import(`@/messages/${locale}.json`)).default;
@@ -28,23 +33,19 @@ export async function generateMetadata({
   };
 }
 
-export default function LocaleLayout({
-  children,
-  params: {locale}
-}: {
-  children: React.ReactNode;
-  params: {locale: string};
-}) {
-  const messages = useMessages();
+export default async function LocaleLayout({ children, params: { locale } }: Props) {
+  // Validate that the incoming `locale` parameter is valid
+  if (!locales.includes(locale as any)) notFound();
 
-  if (locale !== 'en' && locale !== 'es') {
-    notFound();
-  }
+  // Enable static rendering
+  setRequestLocale(locale);
+
+  const messages = await import(`@/messages/${locale}.json`);
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
-        <Providers locale={locale} messages={messages}>
+        <Providers locale={locale} messages={messages.default}>
           {children}
         </Providers>
       </body>
