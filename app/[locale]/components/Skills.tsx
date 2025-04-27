@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Code, Database, Server, Layout, GitBranch, Terminal, Layers, Cpu, Globe, Workflow } from "lucide-react"
+import { Code, Database, Server, Layout, GitBranch, Terminal, Layers, Cpu, Globe, Workflow, Zap, Brain } from "lucide-react"
 import AnimatedSectionHeader from "./AnimatedSectionHeader"
 import { useTranslations } from "next-intl"
 
@@ -28,6 +28,8 @@ const skillsConfig: Skill[] = [
   { icon: Cpu, key: "api", color: "text-red-500" },
   { icon: Globe, key: "performance", color: "text-teal-500" },
   { icon: Workflow, key: "agile", color: "text-cyan-500" },
+  { icon: Zap, key: "web3", color: "text-amber-500" },
+  { icon: Brain, key: "ai", color: "text-emerald-500" },
 ]
 
 export default function Skills() {

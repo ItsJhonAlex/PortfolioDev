@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Code, Layout, Server, Smartphone } from "lucide-react"
+import { Code, Layout, Server, Smartphone, Zap, Brain } from "lucide-react"
 import { useTranslations } from "next-intl"
 
 interface Service {
@@ -28,6 +28,14 @@ export default function Services() {
     {
       icon: <Smartphone className="w-12 h-12 text-yellow-500" />,
       key: "responsive",
+    },
+    {
+      icon: <Zap className="w-12 h-12 text-amber-500" />,
+      key: "web3",
+    },
+    {
+      icon: <Brain className="w-12 h-12 text-emerald-500" />,
+      key: "ai",
     },
   ]
 

@@ -14,23 +14,28 @@
     "projects": "Projects",
     "collaborations": "Collaborations",
     "education": "Education",
-    "contact": "Contact"
+    "contact": "Contact",
+    "hero": "Hero"
+  },
+  "metadata": {
+    "title": "Jonathan Alejandro - Full Stack Developer",
+    "description": "Portfolio of Jonathan Alejandro, a Full Stack Developer specializing in full-stack web applications."
   },
   "home": {
     "title": "Welcome to my Portfolio",
     "description": "I'm a software developer passionate about creating amazing web experiences"
   },
   "hero": {
-    "title": "Jonathan Alejandro",
+    "title": "Jonathan Rodríguez López",
     "role": "Full Stack Developer",
-    "description": "Crafting exceptional digital experiences with modern web technologies. Specialized in building scalable full-stack applications using MongoDB, Express.js, React, and Node.js.",
+    "description": "Passionate creator of innovative digital solutions with a comprehensive approach, from backend architecture to captivating frontend experiences and process automation. Advanced mastery in JavaScript, Python, React, and Node.js ecosystems, complemented with an arsenal of modern technologies to build robust and scalable applications.",
     "more": "Read More",
     "downloadCV": "Download CV"
   },
   "about": {
     "title": "About Me",
-    "description1": "As a passionate MERN Stack Developer, I specialize in building robust and scalable web applications. With a strong foundation in MongoDB, Express.js, React, and Node.js, I create seamless full-stack solutions that deliver exceptional user experiences.",
-    "description2": "My expertise extends to modern frameworks like Next.js and state management tools like Redux. I'm committed to writing clean, efficient code and staying up-to-date with the latest industry trends to deliver cutting-edge solutions for my clients.",
+    "description1": "Versatile and passionate developer dedicated to creating innovative solutions, from backend and frontend design to process automation. Experienced in developing scalable and efficient web applications using JavaScript, Python, React, Node.js, and other modern technologies.",
+    "description2": "Interested in exploring the potential of Web3 and contributing to its development. Extensive experience in project management, including roles as Project Manager, accounting and business management, ensuring quality assurance (Q&A) and process optimization with tools like Odoo and WordPress.",
     "skills": {
       "frontend": {
         "title": "Frontend",
@@ -50,90 +55,122 @@
       }
     }
   },
+  "education": {
+    "title": "Education",
+    "keyAchievements": "Key Achievements",
+    "degree": {
+      "title": "Computer Science Engineering",
+      "institution": "University of Havana",
+      "period": "2015 - 2020",
+      "achievements": [
+        "Specialization in software development and information systems",
+        "Final project focused on web solutions for process automation",
+        "Participation in hackathons and programming competitions"
+      ]
+    }
+  },
   "experience": {
-    "title": "Experiences",
+    "title": "Experience",
     "company0": "Freelance",
-    "location0": "Remote",
+    "location0": "Havana, Cuba",
     "period0": "2020 - Present",
     "role0": "Full Stack Developer",
     "responsibilities0": [
-      "Developing custom web applications for international clients",
-      "Building responsive and scalable frontend interfaces with React",
-      "Implementing secure backend systems with Node.js and Express",
-      "Creating RESTful APIs and managing MongoDB databases",
-      "Collaborating with clients to deliver high-quality solutions"
+      "Development of scalable web applications using React, Node.js, and MongoDB",
+      "Implementation of automation solutions to optimize business processes",
+      "Project management and coordination with multidisciplinary teams",
+      "Development and integration of APIs to connect different services and systems",
+      "Optimization of performance and user experience in web applications"
     ]
   },
   "skills": {
     "title": "Skills",
     "frontend": {
       "name": "Frontend Development",
-      "tech": "React.js, Next.js",
-      "description": "Building responsive and interactive user interfaces with modern React features and Next.js for optimal performance."
+      "tech": "React, Next.js, Vue.js",
+      "description": "Building modern and responsive interfaces with the latest frontend technologies."
     },
     "backend": {
       "name": "Backend Development",
-      "tech": "Node.js, Express, Fastify",
-      "description": "Creating robust server-side applications with focus on scalability and clean architecture."
+      "tech": "Node.js, Express, Python, Django",
+      "description": "Creating robust APIs and scalable services for web applications."
     },
     "database": {
       "name": "Database Management",
-      "tech": "MongoDB, Mongoose",
-      "description": "Designing and implementing efficient database schemas and queries for optimal data management."
+      "tech": "MongoDB, MySQL, PostgreSQL",
+      "description": "Designing and implementing efficient storage solutions."
     },
     "ui": {
       "name": "UI/UX Design",
-      "tech": "Tailwind CSS, Material UI",
-      "description": "Crafting beautiful and intuitive user interfaces with modern design principles and frameworks."
+      "tech": "Tailwind CSS, Material UI, Figma",
+      "description": "Crafting attractive and functional user experiences."
     },
     "git": {
       "name": "Version Control",
-      "tech": "Git, GitHub",
-      "description": "Managing code versions efficiently with Git and collaborating effectively through GitHub."
+      "tech": "Git, GitHub, GitLab",
+      "description": "Efficient source code management and team collaboration."
     },
     "typescript": {
       "name": "TypeScript",
-      "tech": "TypeScript, JavaScript",
-      "description": "Writing type-safe code for better maintainability and developer experience."
+      "tech": "JavaScript, TypeScript",
+      "description": "Developing applications with static typing for greater robustness."
     },
     "state": {
       "name": "State Management",
-      "tech": "Redux, Context API",
-      "description": "Managing complex application state with modern state management solutions."
+      "tech": "Redux, Context API, Zustand",
+      "description": "Implementing efficient solutions for application state management."
     },
     "api": {
-      "name": "API Development",
-      "tech": "REST, GraphQL",
-      "description": "Designing and implementing efficient APIs for seamless data communication."
+      "name": "API Integration",
+      "tech": "REST, GraphQL, WebSockets",
+      "description": "Development and integration of APIs for communication between services."
     },
     "performance": {
       "name": "Web Performance",
-      "tech": "Optimization, SEO",
-      "description": "Optimizing web applications for speed, accessibility, and search engine visibility."
+      "tech": "Lazy Loading, Code Splitting, SSR",
+      "description": "Improving performance and user experience in web applications."
     },
     "agile": {
       "name": "Agile Methodologies",
-      "tech": "Scrum, Kanban",
-      "description": "Working efficiently in agile environments with focus on continuous delivery."
+      "tech": "Scrum, Kanban, Jira",
+      "description": "Project management with agile methodologies for efficient delivery."
+    },
+    "web3": {
+      "name": "Blockchain Development",
+      "tech": "Solidity, Ethereum, Smart Contracts, DeFi",
+      "description": "Development of decentralized applications (dApps) and smart contracts for blockchain ecosystems."
+    },
+    "ai": {
+      "name": "AI and Automation",
+      "tech": "Python, TensorFlow, NLP, Automation",
+      "description": "Implementation of AI-based solutions and process automation to optimize workflows."
     }
   },
   "services": {
     "title": "My Services",
     "web": {
-      "title": "Web Application Development",
-      "description": "Custom web applications built with React and Next.js, focusing on performance and user experience."
+      "title": "Full Stack Web Development",
+      "description": "Creation of complete web applications, from frontend to backend, using the most modern and efficient technologies in the market."
     },
     "backend": {
       "title": "Backend Development",
-      "description": "Robust and scalable server-side solutions using Node.js, Express, and Fastify."
+      "description": "Building robust APIs, scalable services, and database optimization to ensure performance and security."
     },
     "api": {
-      "title": "API Development",
-      "description": "RESTful and GraphQL API design and implementation for seamless data flow between client and server."
+      "title": "API Integration",
+      "description": "Development and integration of APIs to connect different services and systems, ensuring efficient communication between components."
     },
     "responsive": {
       "title": "Responsive Design",
-      "description": "Mobile-first, responsive web designs that work flawlessly across all devices and screen sizes."
+      "description": "Creation of interfaces adaptable to all devices, ensuring an optimal user experience on mobile, tablet, and desktop."
+    },
+    "web3": {
+      "title": "Blockchain Development",
+      "description": "Creation of smart contracts, custom tokens, and decentralized applications (dApps) for blockchain ecosystems like Ethereum."
+    },
+    "ai": {
+      "title": "AI and Automation",
+      "description": "Implementation of AI-based solutions and process automation to optimize operations and improve business efficiency."
     }
   },
   "projects": {
@@ -147,18 +184,18 @@
     "projects": {
       "ecommerce": {
         "title": "E-commerce Platform",
-        "description": "A full-stack e-commerce solution with React, Node.js, and MongoDB.",
-        "tags": ["React", "Node.js", "MongoDB", "Express"]
+        "description": "Complete online store with shopping cart, payment gateway, and admin panel.",
+        "tags": ["React", "Node.js", "MongoDB", "Stripe", "Redux"]
       },
       "taskManager": {
         "title": "Task Management App",
-        "description": "A Trello-like task management application with drag-and-drop functionality.",
-        "tags": ["React", "Redux", "Node.js", "Socket.io"]
+        "description": "Application for project and task management with real-time collaboration features.",
+        "tags": ["Next.js", "Firebase", "Tailwind CSS", "React Query"]
       },
       "weather": {
         "title": "Weather Dashboard",
-        "description": "A weather dashboard that displays current and forecasted weather data.",
-        "tags": ["React", "OpenWeather API", "Chart.js"]
+        "description": "Application that displays real-time weather information with interactive visualizations.",
+        "tags": ["React", "OpenWeather API", "Chart.js", "Styled Components"]
       }
     }
   },
@@ -167,51 +204,40 @@
     "viewProject": "View Project",
     "projects": {
       "openSource": {
-        "title": "Open Source Library",
-        "description": "Contributed to a popular open-source React component library.",
-        "role": "Contributor",
-        "date": "2023"
-      },
-      "hackathon": {
-        "title": "Community Hackathon Project",
-        "description": "Collaborated on a web app for local community engagement during a hackathon.",
+        "title": "React Component Library",
+        "description": "Contribution to an open-source library of reusable React components.",
         "role": "Frontend Developer",
         "date": "2022"
       },
+      "hackathon": {
+        "title": "Community Engagement App",
+        "description": "Development of an application to promote citizen participation in local projects.",
+        "role": "Full Stack Developer",
+        "date": "2021"
+      },
       "blog": {
-        "title": "Tech Blog",
-        "description": "Co-authored technical articles on modern web development practices.",
+        "title": "Collaborative Technical Blog",
+        "description": "Contribution of technical articles on modern web development and best practices.",
         "role": "Technical Writer",
-        "date": "2021 - Present"
+        "date": "2020 - Present"
       }
     }
   },
-  "education": {
-    "title": "Education",
-    "keyAchievements": "Key Achievements",
-    "degree": {
-      "title": "Bachelor's Degree in Computer Science",
-      "institution": "GC University Faisalabad",
-      "period": "2018 – 2022",
-      "achievements": [
-        "Graduated with honors",
-        "Specialized in Web Technologies and Artificial Intelligence",
-        "Completed capstone project on 'Intelligent Web Application for Healthcare'"
-      ]
-    }
-  },
-  "metadata": {
-    "title": "Jonathan Alejandro - Full Stack Developer",
-    "description": "Portfolio of Jonathan Alejandro, a Full Stack Developer specializing in full-stack web applications."
-  },
   "contact": {
     "info": "Info",
-    "location": "La Habana",
+    "location": "Havana, Cuba",
     "title": "Contact",
     "name": "Name",
     "email": "Email",
     "subject": "Subject",
     "message": "Message",
-    "send": "Send Message"
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully! I'll get back to you soon.",
+    "nameError": "Name must be at least 2 characters",
+    "emailError": "Please enter a valid email address",
+    "subjectError": "Subject must be at least 5 characters",
+    "messageError": "Message must be at least 10 characters",
+    "decorative": "Decorative background"
   }
 }

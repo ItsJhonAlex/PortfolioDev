@@ -44,7 +44,7 @@ export default async function LocaleLayout({ children, params: { locale } }: Pro
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.className} animated-gradient min-h-screen`} suppressHydrationWarning>
         <Providers locale={locale} messages={messages.default}>
           {children}
         </Providers>

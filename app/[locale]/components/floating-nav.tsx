@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { motion } from "framer-motion"
 import { useTranslations } from "next-intl"
 
@@ -19,8 +19,15 @@ const sectionIds = [
 export default function FloatingNav() {
   const t = useTranslations('nav')
   const [activeSection, setActiveSection] = useState("hero")
+  const [mounted, setMounted] = useState(false)
 
+  // Efecto para establecer mounted a true después del montaje
   useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Función para configurar el observador de intersección
+  const setupObserver = useCallback(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -37,8 +44,22 @@ export default function FloatingNav() {
       if (element) observer.observe(element)
     })
 
-    return () => observer.disconnect()
+    return observer
   }, [])
+
+  useEffect(() => {
+    if (!mounted) return
+
+    // Esperar a que los componentes lazy-loaded se carguen
+    const timer = setTimeout(() => {
+      const observer = setupObserver()
+      return () => observer.disconnect()
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [mounted, setupObserver])
+
+  if (!mounted) return null
 
   return (
     <motion.div

@@ -51,10 +51,10 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+            <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-justify">
               {t('description1')}
             </p>
-            <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
               {t('description2')}
             </p>
           </motion.div>
@@ -68,11 +68,13 @@ export default function About() {
             {skills.map((skill, index) => (
               <div
                 key={index}
-                className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col items-center text-center"
+                className="p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col items-center text-center h-full"
               >
-                {skill.icon}
-                <h3 className="text-xl font-semibold mt-4 mb-2 dark:text-white">{skill.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400">{skill.description}</p>
+                <div className="mb-6">
+                  {skill.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-4 dark:text-white">{skill.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{skill.description}</p>
               </div>
             ))}
           </motion.div>

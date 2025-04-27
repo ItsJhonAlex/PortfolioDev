@@ -8,11 +8,16 @@ export default function Header() {
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [activeSection, setActiveSection] = useState("home")
-  const { theme } = useTheme()
+  const { theme, resolvedTheme } = useTheme()
 
-  useEffect(() => setMounted(true), [])
+  // Efecto para establecer mounted a true después del montaje
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
+    if (!mounted) return
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY
       setIsVisible(currentScrollY < lastScrollY || currentScrollY < 100)
@@ -41,8 +46,9 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll)
       observer.disconnect()
     }
-  }, [lastScrollY])
+  }, [lastScrollY, mounted])
 
+  // No renderizar nada durante SSR o antes del montaje
   if (!mounted) return null
 
   const scrollToSection = (sectionId: string) => {
@@ -59,12 +65,15 @@ export default function Header() {
     }
   }
 
+  // Usar resolvedTheme para obtener el tema actual (system, light, dark)
+  const currentTheme = resolvedTheme || theme
+
   return (
     <header
       className={`
         fixed w-full z-50 transition-all duration-300
         ${isVisible ? "top-0" : "-top-20"}
-        ${theme === "dark" ? "bg-gray-900/95" : "bg-white/95"}
+        ${currentTheme === "dark" ? "bg-gray-900/95" : "bg-white/95"}
         backdrop-blur-sm shadow-md
       `}
     >

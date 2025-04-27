@@ -26,7 +26,7 @@ export default function Hero() {
   const t = useTranslations('hero');
   const locale = useLocale();
   
-  const cvPath = locale === 'es' ? '/cv-es.pdf' : '/cv-en.pdf';
+  const cvPath = locale === 'es' ? '/ItsJhonAlex_cv_es.pdf' : '/ItsJhonAlex_cv_en.pdf';
 
   return (
     <section
@@ -57,12 +57,14 @@ export default function Hero() {
             <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-700 dark:text-gray-300">
               {t('role')}
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0 text-justify">
               {t('description')}
             </p>
             <div className="flex justify-center lg:justify-start space-x-4 mb-8">
               <a
-                href="#"
+                href="https://github.com/ItsJhonAlex"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl"
                 aria-label="GitHub Profile"
               >
@@ -76,7 +78,7 @@ export default function Hero() {
                 <Linkedin className="w-6 h-6 text-gray-700 dark:text-gray-300" />
               </a>
               <a
-                href="mailto:musmanzafar53@gmail.com"
+                href="mailto:itsjhonalex@gmail.com"
                 className="p-3 rounded-full bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl"
                 aria-label="Email Contact"
               >

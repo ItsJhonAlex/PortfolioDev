@@ -35,13 +35,25 @@ export default function Contact() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
     try {
-      // Here you would typically send the form data to your backend
-      await new Promise((resolve) => setTimeout(resolve, 1000)) // Simulate API call
+      // Enviar datos al webhook de Make.com
+      const response = await fetch('https://hook.us2.make.com/cmbp6n9rqhrr6xa684l572vnh8s3nsib', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Error al enviar el formulario');
+      }
+      
       setSubmitSuccess(true)
       reset()
       setTimeout(() => setSubmitSuccess(false), 3000)
     } catch (error) {
-      console.error("Error submitting form:", error)
+      console.error("Error enviando el formulario:", error)
+      // Aquí podrías mostrar un mensaje de error al usuario
     } finally {
       setIsSubmitting(false)
     }
@@ -71,18 +83,18 @@ export default function Contact() {
               <h3 className="text-2xl font-semibold mb-6 dark:text-white">{t('info')}</h3>
               <div className="space-y-6">
                 <a
-                  href="mailto:musmanzafar53@gmail.com"
+                  href="mailto:itsjhonalex@gmail.com"
                   className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
                 >
                   <Mail className="w-6 h-6 mr-3 text-blue-600" />
-                  musmanzafar53@gmail.com
+                  itsjhonalex@gmail.com
                 </a>
                 <a
-                  href="tel:+923055356766"
+                  href="tel:+5350328131"
                   className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
                 >
                   <Phone className="w-6 h-6 mr-3 text-blue-600" />
-                  +92-305-5356766
+                  +5350328131
                 </a>
                 <div className="flex items-center text-gray-600 dark:text-gray-300">
                   <MapPin className="w-6 h-6 mr-3 text-blue-600" />

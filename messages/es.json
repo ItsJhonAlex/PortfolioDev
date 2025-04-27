@@ -25,16 +25,16 @@
     "description": "Soy un desarrollador de software apasionado por crear experiencias web increíbles"
   },
   "hero": {
-    "title": "Jonathan Alejandro",
+    "title": "Jonathan Rodríguez López",
     "role": "Desarrollador Full Stack",
-    "description": "Creando experiencias digitales excepcionales con tecnologías web modernas. Especializado en construir aplicaciones full-stack escalables utilizando MongoDB, Express.js, React y Node.js.",
+    "description": "Apasionado creador de soluciones digitales innovadoras con enfoque integral, desde arquitectura backend hasta experiencias frontend cautivadoras y automatización de procesos. Dominio avanzado en ecosistemas JavaScript, Python, React y Node.js, complementado con un arsenal de tecnologías modernas para construir aplicaciones robustas y escalables.",
     "more": "Leer más",
     "downloadCV": "Descargar CV"
   },
   "about": {
     "title": "Sobre Mí",
-    "description1": "Como desarrollador MERN Stack apasionado, me especializo en construir aplicaciones web robustas y escalables. Con una sólida base en MongoDB, Express.js, React y Node.js, creo soluciones full-stack perfectas que brindan experiencias de usuario excepcionales.",
-    "description2": "Mi experiencia se extiende a frameworks modernos como Next.js y herramientas de gestión de estado como Redux. Estoy comprometido con escribir código limpio y eficiente, manteniéndome al día con las últimas tendencias de la industria para ofrecer soluciones de vanguardia a mis clientes.",
+    "description1": "Desarrollador versátil y apasionado por la creación de soluciones innovadoras, desde el diseño del backend y frontend hasta la automatización de procesos. Con experiencia en el desarrollo de aplicaciones web escalables y eficientes utilizando JavaScript, Python, React, Node.js y otras tecnologías modernas.",
+    "description2": "Interesado en explorar el potencial de la Web3 y contribuir a su desarrollo. Amplia experiencia en la gestión de proyectos, incluyendo roles como Project Manager, gestión contable y empresarial, asegurando la calidad (Q&A) y la optimización de procesos con herramientas como Odoo y WordPress.",
     "skills": {
       "frontend": {
         "title": "Frontend",
@@ -56,104 +56,122 @@
   },
   "education": {
     "title": "Educación",
-    "keyAchievements": "Logros Principales",
+    "keyAchievements": "Logros Destacados",
     "degree": {
-      "title": "Licenciatura en Ciencias de la Computación",
-      "institution": "GC University Faisalabad",
-      "period": "2018 – 2022",
+      "title": "Ingeniería Informática",
+      "institution": "Universidad de La Habana",
+      "period": "2015 - 2020",
       "achievements": [
-        "Graduado con honores",
-        "Especializado en Tecnologías Web e Inteligencia Artificial",
-        "Proyecto final sobre 'Aplicación Web Inteligente para la Salud'"
+        "Especialización en desarrollo de software y sistemas de información",
+        "Proyecto final enfocado en soluciones web para automatización de procesos",
+        "Participación en hackathons y competencias de programación"
       ]
     }
   },
   "experience": {
-    "title": "Experiencias",
+    "title": "Experiencia",
     "company0": "Freelance",
-    "location0": "Remoto",
+    "location0": "Habana, Cuba",
     "period0": "2020 - Presente",
     "role0": "Desarrollador Full Stack",
     "responsibilities0": [
-      "Desarrollo de aplicaciones web personalizadas para clientes internacionales",
-      "Construcción de interfaces frontend responsivas y escalables con React",
-      "Implementación de sistemas backend seguros con Node.js y Express",
-      "Creación de APIs RESTful y gestión de bases de datos MongoDB",
-      "Colaboración con clientes para entregar soluciones de alta calidad"
+      "Desarrollo de aplicaciones web escalables utilizando React, Node.js y MongoDB",
+      "Implementación de soluciones de automatización para optimizar procesos empresariales",
+      "Gestión de proyectos y coordinación con equipos multidisciplinarios",
+      "Desarrollo e integración de APIs para conectar diferentes servicios y sistemas",
+      "Optimización de rendimiento y experiencia de usuario en aplicaciones web"
     ]
   },
 
   "skills": {
     "title": "Habilidades",
     "frontend": {
-      "name": "Desarrollo Frontend",
-      "tech": "React.js, Next.js",
-      "description": "Creación de interfaces de usuario interactivas y responsivas con características modernas de React y Next.js para un rendimiento óptimo."
+      "name": "Frontend",
+      "tech": "React, Next.js, Vue.js",
+      "description": "Desarrollo de interfaces modernas y responsivas con las últimas tecnologías frontend."
     },
     "backend": {
-      "name": "Desarrollo Backend",
-      "tech": "Node.js, Express, Fastify",
-      "description": "Creación de aplicaciones servidor robustas y escalables con enfoque en la escalabilidad y la arquitectura limpia."
+      "name": "Backend",
+      "tech": "Node.js, Express, Python, Django",
+      "description": "Construcción de APIs robustas y servicios escalables para aplicaciones web."
     },
     "database": {
-      "name": "Gestión de Base de Datos",
-      "tech": "MongoDB, Mongoose",
-      "description": "Diseño e implementación de schemas de base de datos y consultas eficientes para una gestión óptima de datos."
+      "name": "Bases de Datos",
+      "tech": "MongoDB, MySQL, PostgreSQL",
+      "description": "Diseño e implementación de soluciones de almacenamiento eficientes."
     },
     "ui": {
-      "name": "Diseño de UI/UX",
-      "tech": "Tailwind CSS, Material UI",
-      "description": "Creación de interfaces de usuario intuitivas y hermosas con principios de diseño modernos y frameworks."
+      "name": "Diseño UI/UX",
+      "tech": "Tailwind CSS, Material UI, Figma",
+      "description": "Creación de experiencias de usuario atractivas y funcionales."
     },
     "git": {
       "name": "Control de Versiones",
-      "tech": "Git, GitHub",
-      "description": "Gestión de versiones de código de manera eficiente con Git y colaboración efectiva a través de GitHub."
+      "tech": "Git, GitHub, GitLab",
+      "description": "Gestión eficiente del código fuente y colaboración en equipo."
     },
     "typescript": {
       "name": "TypeScript",
-      "tech": "TypeScript, JavaScript",
-      "description": "Escritura de código seguro y escalable para una mejor experiencia de desarrollo y mantenimiento."
+      "tech": "JavaScript, TypeScript",
+      "description": "Desarrollo de aplicaciones con tipado estático para mayor robustez."
     },
     "state": {
       "name": "Gestión de Estado",
-      "tech": "Redux, Context API",
-      "description": "Gestión de estado de aplicaciones complejas con soluciones de gestión de estado modernas."
+      "tech": "Redux, Context API, Zustand",
+      "description": "Implementación de soluciones eficientes para la gestión del estado de aplicaciones."
     },
     "api": {
-      "name": "Desarrollo de API",
-      "tech": "REST, GraphQL",
-      "description": "Diseño e implementación de APIs eficientes para una comunicación de datos sin interrupciones."
+      "name": "Integración de APIs",
+      "tech": "REST, GraphQL, WebSockets",
+      "description": "Desarrollo e integración de APIs para comunicación entre servicios."
     },
     "performance": {
-      "name": "Rendimiento Web",
-      "tech": "Optimización, SEO",
-      "description": "Optimización de aplicaciones web para la velocidad, accesibilidad y visibilidad en los motores de búsqueda."
+      "name": "Optimización",
+      "tech": "Lazy Loading, Code Splitting, SSR",
+      "description": "Mejora del rendimiento y la experiencia del usuario en aplicaciones web."
     },
     "agile": {
       "name": "Metodologías Ágiles",
-      "tech": "Scrum, Kanban",
-      "description": "Trabajo eficiente en entornos ágiles con enfoque en la entrega continua."
+      "tech": "Scrum, Kanban, Jira",
+      "description": "Gestión de proyectos con metodologías ágiles para entrega eficiente."
+    },
+    "web3": {
+      "name": "Desarrollo Blockchain",
+      "tech": "Solidity, Ethereum, Smart Contracts, DeFi",
+      "description": "Desarrollo de aplicaciones descentralizadas (dApps) y contratos inteligentes para ecosistemas blockchain."
+    },
+    "ai": {
+      "name": "IA y Automatización",
+      "tech": "Python, TensorFlow, NLP, Automatización",
+      "description": "Implementación de soluciones basadas en inteligencia artificial y automatización de procesos para optimizar flujos de trabajo."
     }
   },
 
   "services": {
-    "title": "Mis Servicios",
+    "title": "Servicios",
     "web": {
-      "title": "Desarrollo de Aplicaciones Web",
-      "description": "Aplicaciones web personalizadas construidas con React y Next.js, enfocadas en el rendimiento y la experiencia del usuario."
+      "title": "Desarrollo Web Full Stack",
+      "description": "Creación de aplicaciones web completas, desde el frontend hasta el backend, utilizando las tecnologías más modernas y eficientes del mercado."
     },
     "backend": {
       "title": "Desarrollo Backend",
-      "description": "Soluciones robustas y escalables del lado del servidor utilizando Node.js, Express y Fastify."
+      "description": "Construcción de APIs robustas, servicios escalables y optimización de bases de datos para garantizar el rendimiento y la seguridad."
     },
     "api": {
-      "title": "Desarrollo de APIs",
-      "description": "Diseño e implementación de APIs RESTful y GraphQL para un flujo de datos fluido entre cliente y servidor."
+      "title": "Integración de APIs",
+      "description": "Desarrollo e integración de APIs para conectar diferentes servicios y sistemas, asegurando una comunicación eficiente entre componentes."
     },
     "responsive": {
       "title": "Diseño Responsivo",
-      "description": "Diseños web mobile-first y responsivos que funcionan perfectamente en todos los dispositivos y tamaños de pantalla."
+      "description": "Creación de interfaces adaptables a todos los dispositivos, garantizando una experiencia de usuario óptima en móviles, tablets y escritorio."
+    },
+    "web3": {
+      "title": "Desarrollo Blockchain",
+      "description": "Creación de contratos inteligentes, tokens personalizados y aplicaciones descentralizadas (dApps) para ecosistemas blockchain como Ethereum."
+    },
+    "ai": {
+      "title": "IA y Automatización",
+      "description": "Implementación de soluciones basadas en inteligencia artificial y automatización de procesos para optimizar operaciones y mejorar la eficiencia empresarial."
     }
   },
 
@@ -167,19 +185,19 @@
     "liveDemo": "Demo en Vivo",
     "projects": {
       "ecommerce": {
-        "title": "Plataforma de Comercio Electrónico",
-        "description": "Una solución completa de comercio electrónico con React, Node.js y MongoDB.",
-        "tags": ["React", "Node.js", "MongoDB", "Express"]
+        "title": "Plataforma E-commerce",
+        "description": "Tienda online completa con carrito de compras, pasarela de pagos y panel de administración.",
+        "tags": ["React", "Node.js", "MongoDB", "Stripe", "Redux"]
       },
       "taskManager": {
-        "title": "App de Gestión de Tareas",
-        "description": "Una aplicación de gestión de tareas estilo Trello con funcionalidad de arrastrar y soltar.",
-        "tags": ["React", "Redux", "Node.js", "Socket.io"]
+        "title": "Gestor de Tareas",
+        "description": "Aplicación para gestión de proyectos y tareas con funcionalidades de colaboración en tiempo real.",
+        "tags": ["Next.js", "Firebase", "Tailwind CSS", "React Query"]
       },
       "weather": {
-        "title": "Panel del Clima",
-        "description": "Un panel que muestra datos del clima actual y pronóstico.",
-        "tags": ["React", "OpenWeather API", "Chart.js"]
+        "title": "Dashboard del Clima",
+        "description": "Aplicación que muestra información meteorológica en tiempo real con visualizaciones interactivas.",
+        "tags": ["React", "OpenWeather API", "Chart.js", "Styled Components"]
       }
     }
   },
@@ -188,34 +206,41 @@
     "viewProject": "Ver Proyecto",
     "projects": {
       "openSource": {
-        "title": "Librería de Código Abierto",
-        "description": "Contribuí a una popular librería de componentes React de código abierto.",
-        "role": "Colaborador",
-        "date": "2023"
-      },
-      "hackathon": {
-        "title": "Proyecto Hackathon Comunitario",
-        "description": "Colaboré en una aplicación web para participación comunitaria local durante un hackathon.",
+        "title": "Biblioteca de Componentes React",
+        "description": "Contribución a una biblioteca de código abierto de componentes React reutilizables.",
         "role": "Desarrollador Frontend",
         "date": "2022"
       },
+      "hackathon": {
+        "title": "App de Participación Comunitaria",
+        "description": "Desarrollo de una aplicación para fomentar la participación ciudadana en proyectos locales.",
+        "role": "Desarrollador Full Stack",
+        "date": "2021"
+      },
       "blog": {
-        "title": "Blog Técnico",
-        "description": "Co-autor de artículos técnicos sobre prácticas modernas de desarrollo web.",
-        "role": "Escritor Técnico",
-        "date": "2021 - Presente"
+        "title": "Blog Técnico Colaborativo",
+        "description": "Contribución de artículos técnicos sobre desarrollo web moderno y mejores prácticas.",
+        "role": "Autor Técnico",
+        "date": "2020 - Presente"
       }
     }
   },
   
   "contact": {
     "info": "Información",
-    "location": "La Habana",
+    "location": "La Habana, Cuba",
     "title": "Contacto",
     "name": "Nombre",
     "email": "Correo",
     "subject": "Asunto",
     "message": "Mensaje",
-    "send": "Enviar Mensaje"
+    "send": "Enviar Mensaje",
+    "sending": "Enviando...",
+    "success": "¡Mensaje enviado con éxito! Me pondré en contacto contigo pronto.",
+    "nameError": "El nombre debe tener al menos 2 caracteres",
+    "emailError": "Por favor ingresa un correo electrónico válido",
+    "subjectError": "El asunto debe tener al menos 5 caracteres",
+    "messageError": "El mensaje debe tener al menos 10 caracteres",
+    "decorative": "Fondo decorativo"
   }
 }
