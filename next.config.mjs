@@ -27,48 +27,13 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  // Optimizar chunks
-  webpack: (config, { dev, isServer }) => {
-    if (!dev && !isServer) {
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        cacheGroups: {
-          default: false,
-          vendors: false,
-          // Framework chunk
-          framework: {
-            chunks: 'all',
-            name: 'framework',
-            test: /(?<!node_modules.*)[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
-            priority: 40,
-            enforce: true,
-          },
-          // Commons chunk
-          commons: {
-            name: 'commons',
-            chunks: 'all',
-            minChunks: 2,
-            priority: 20,
-          },
-          // Lib chunk
-          lib: {
-            test(module) {
-              return (
-                module.size() > 160000 &&
-                /node_modules[/\\]/.test(module.identifier())
-              )
-            },
-            name(module) {
-              const hash = require('crypto').createHash('sha1')
-              hash.update(module.identifier())
-              return hash.digest('hex').substring(0, 8)
-            },
-            priority: 30,
-            minChunks: 1,
-            reuseExistingChunk: true,
-          }
-        }
-      }
+  // Optimizaciones más simples y compatibles
+  webpack: (config) => {
+    // Optimización simple sin problemas de ES modules
+    config.optimization = {
+      ...config.optimization,
+      usedExports: true,
+      sideEffects: false,
     }
     return config
   },
