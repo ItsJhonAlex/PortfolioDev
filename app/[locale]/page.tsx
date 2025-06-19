@@ -3,6 +3,7 @@ import Hero from "./components/Hero"
 import FloatingNav from "./components/floating-nav"
 import StructuredData from "./components/StructuredData"
 import { Suspense } from 'react'
+import { getTranslations } from 'next-intl/server'
 // Eliminar esta importación que causa conflicto
 // import LoadingIndicator from './components/LoadingIndicator'
 
@@ -49,10 +50,18 @@ const Contact = dynamic(() => import('./components/Contact'), {
   loading: () => <LoadingIndicator />
 })
 
-export default function Home() {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const t = await getTranslations()
+  
   return (
     <main className="min-h-screen bg-background">
-      <StructuredData />
+      <StructuredData 
+        locale={locale}
+        heroDescription={t('hero.description')}
+        heroRole={t('hero.role')}
+        metadataDescription={t('metadata.description')}
+      />
       <FloatingNav />
       <Hero />
       <Suspense fallback={<LoadingIndicator />}>

@@ -1,10 +1,16 @@
-"use client"
+interface StructuredDataProps {
+  locale: string
+  heroDescription: string
+  heroRole: string
+  metadataDescription: string
+}
 
-import { useTranslations, useLocale } from "next-intl"
-
-export default function StructuredData() {
-  const t = useTranslations()
-  const locale = useLocale()
+export default function StructuredData({
+  locale,
+  heroDescription,
+  heroRole,
+  metadataDescription
+}: StructuredDataProps) {
   
   const baseUrl = 'https://itsjhonalex.is-a.dev'
   
@@ -14,7 +20,7 @@ export default function StructuredData() {
     "@id": `${baseUrl}/#person`,
     "name": "Jonathan Rodríguez López",
     "alternateName": "Jonathan Alejandro",
-    "description": t('hero.description'),
+    "description": heroDescription,
     "url": baseUrl,
     "image": `${baseUrl}/profile-image.jpg`,
     "sameAs": [
@@ -22,7 +28,7 @@ export default function StructuredData() {
       "https://linkedin.com/in/itsjhonalex",
       "mailto:itsjhonalex@gmail.com"
     ],
-    "jobTitle": t('hero.role'),
+    "jobTitle": heroRole,
     "worksFor": {
       "@type": "Organization",
       "name": "Freelance"
@@ -71,7 +77,7 @@ export default function StructuredData() {
     "@id": `${baseUrl}/#website`,
     "url": baseUrl,
     "name": "Jonathan Rodríguez López - Portfolio",
-    "description": t('metadata.description'),
+    "description": metadataDescription,
     "inLanguage": [locale === 'es' ? 'es-ES' : 'en-US'],
     "isPartOf": {
       "@type": "WebSite",
@@ -90,7 +96,7 @@ export default function StructuredData() {
     "@type": "CreativeWork",
     "@id": `${baseUrl}/#portfolio`,
     "name": "Portfolio - Jonathan Rodríguez López",
-    "description": t('metadata.description'),
+    "description": metadataDescription,
     "url": `${baseUrl}/${locale}`,
     "author": {
       "@id": `${baseUrl}/#person`
