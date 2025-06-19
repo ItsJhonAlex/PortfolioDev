@@ -1,54 +1,8 @@
-import dynamic from 'next/dynamic'
 import Hero from "./components/Hero"
 import FloatingNav from "./components/floating-nav"
 import StructuredData from "./components/StructuredData"
-import { Suspense } from 'react'
+import ClientSections from "./components/ClientSections"
 import { getTranslations } from 'next-intl/server'
-// Eliminar esta importación que causa conflicto
-// import LoadingIndicator from './components/LoadingIndicator'
-
-// Componente simple de indicador de carga para Suspense
-function LoadingIndicator() {
-  return (
-    <div className="flex justify-center items-center py-20">
-      <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-    </div>
-  )
-}
-
-// Componentes cargados de forma perezosa más agresiva
-const About = dynamic(() => import('./components/About'), { 
-  ssr: false,
-  loading: () => <LoadingIndicator />
-})
-const Experience = dynamic(() => import('./components/Experience'), { 
-  ssr: false,
-  loading: () => <LoadingIndicator />
-})
-const Skills = dynamic(() => import('./components/Skills'), { 
-  ssr: false,
-  loading: () => <LoadingIndicator />
-})
-const Services = dynamic(() => import('./components/Services'), { 
-  ssr: false,
-  loading: () => <LoadingIndicator />
-})
-const PersonalProjects = dynamic(() => import('./components/PersonalProjects'), { 
-  ssr: false,
-  loading: () => <LoadingIndicator />
-})
-const Collaborations = dynamic(() => import('./components/Collaborations'), { 
-  ssr: false,
-  loading: () => <LoadingIndicator />
-})
-const Education = dynamic(() => import('./components/Education'), { 
-  ssr: false,
-  loading: () => <LoadingIndicator />
-})
-const Contact = dynamic(() => import('./components/Contact'), { 
-  ssr: false,
-  loading: () => <LoadingIndicator />
-})
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -64,30 +18,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       />
       <FloatingNav />
       <Hero />
-      <Suspense fallback={<LoadingIndicator />}>
-        <About />
-      </Suspense>
-      <Suspense fallback={<LoadingIndicator />}>
-        <Experience />
-      </Suspense>
-      <Suspense fallback={<LoadingIndicator />}>
-        <Skills />
-      </Suspense>
-      <Suspense fallback={<LoadingIndicator />}>
-        <Services />
-      </Suspense>
-      <Suspense fallback={<LoadingIndicator />}>
-        <PersonalProjects />
-      </Suspense>
-      <Suspense fallback={<LoadingIndicator />}>
-        <Collaborations />
-      </Suspense>
-      <Suspense fallback={<LoadingIndicator />}>
-        <Education />
-      </Suspense>
-      <Suspense fallback={<LoadingIndicator />}>
-        <Contact />
-      </Suspense>
+      <ClientSections />
     </main>
   )
 }

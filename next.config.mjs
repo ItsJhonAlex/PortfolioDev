@@ -27,8 +27,6 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  // JavaScript moderno - reduce polyfills
-  swcMinify: true,
   // Optimizar chunks
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
