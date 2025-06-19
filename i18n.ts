@@ -4,11 +4,13 @@ export default getRequestConfig(async ({locale}) => {
   // Validate that the incoming `locale` parameter is valid
   if (locale !== 'en' && locale !== 'es') {
     return {
-      messages: {}
+      messages: {},
+      timeZone: 'America/Havana'
     };
   }
  
   return {
-    messages: (await import(`./messages/${locale}.json`)).default
+    messages: (await import(`./messages/${locale}.json`)).default,
+    timeZone: 'America/Havana'
   };
 });

@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import Hero from "./components/Hero"
 import FloatingNav from "./components/floating-nav"
+import StructuredData from "./components/StructuredData"
 import { Suspense } from 'react'
 // Eliminar esta importación que causa conflicto
 // import LoadingIndicator from './components/LoadingIndicator'
@@ -51,6 +52,7 @@ const Contact = dynamic(() => import('./components/Contact'), {
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
+      <StructuredData />
       <FloatingNav />
       <Hero />
       <Suspense fallback={<LoadingIndicator />}>
