@@ -14,12 +14,12 @@ export default function GoogleAnalytics({ GA_TRACKING_ID }: GoogleAnalyticsProps
   return (
     <>
       <Script
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
       />
       <Script
         id="google-analytics"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
@@ -28,6 +28,8 @@ export default function GoogleAnalytics({ GA_TRACKING_ID }: GoogleAnalyticsProps
             gtag('config', '${GA_TRACKING_ID}', {
               page_title: document.title,
               page_location: window.location.href,
+              anonymize_ip: true,
+              cookie_flags: 'SameSite=None;Secure'
             });
           `,
         }}

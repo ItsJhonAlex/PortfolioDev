@@ -16,37 +16,37 @@ function LoadingIndicator() {
   )
 }
 
-// Componentes cargados de forma perezosa
+// Componentes cargados de forma perezosa más agresiva
 const About = dynamic(() => import('./components/About'), { 
-  ssr: true,
+  ssr: false,
   loading: () => <LoadingIndicator />
 })
 const Experience = dynamic(() => import('./components/Experience'), { 
-  ssr: true,
+  ssr: false,
   loading: () => <LoadingIndicator />
 })
 const Skills = dynamic(() => import('./components/Skills'), { 
-  ssr: true,
+  ssr: false,
   loading: () => <LoadingIndicator />
 })
 const Services = dynamic(() => import('./components/Services'), { 
-  ssr: true,
+  ssr: false,
   loading: () => <LoadingIndicator />
 })
 const PersonalProjects = dynamic(() => import('./components/PersonalProjects'), { 
-  ssr: true,
+  ssr: false,
   loading: () => <LoadingIndicator />
 })
 const Collaborations = dynamic(() => import('./components/Collaborations'), { 
-  ssr: true,
+  ssr: false,
   loading: () => <LoadingIndicator />
 })
 const Education = dynamic(() => import('./components/Education'), { 
-  ssr: true,
+  ssr: false,
   loading: () => <LoadingIndicator />
 })
 const Contact = dynamic(() => import('./components/Contact'), { 
-  ssr: true,
+  ssr: false,
   loading: () => <LoadingIndicator />
 })
 

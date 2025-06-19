@@ -5,7 +5,30 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
+    "./utils/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  // Configuración de purge más agresiva
+  purge: {
+    enabled: process.env.NODE_ENV === 'production',
+    content: [
+      "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+      "./components/**/*.{js,ts,jsx,tsx,mdx}",
+      "./app/**/*.{js,ts,jsx,tsx,mdx}",
+      "./lib/**/*.{js,ts,jsx,tsx,mdx}",
+      "./utils/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+    options: {
+      safelist: [
+        // Clases dinámicas de theme
+        /^bg-/, /^text-/, /^border-/, /^hover:/, /^dark:/,
+        // Animaciones críticas
+        'animate-spin', 'animate-pulse', 'animate-gradient-x',
+        // Estados de formulario
+        'border-red-500', 'border-green-500', 'text-red-500', 'text-green-500'
+      ],
+    }
+  },
   theme: {
     extend: {
       colors: {

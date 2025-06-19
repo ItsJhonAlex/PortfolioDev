@@ -118,7 +118,9 @@ export default function Contact() {
                   </label>
                   <input
                     {...register("name")}
+                    id="name"
                     type="text"
+                    placeholder={t('name')}
                     className={`w-full px-4 py-2 rounded-md border ${
                       errors.name ? "border-red-500" : "border-gray-300 dark:border-gray-600"
                     } focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
@@ -131,7 +133,9 @@ export default function Contact() {
                   </label>
                   <input
                     {...register("email")}
+                    id="email"
                     type="email"
+                    placeholder={t('email')}
                     className={`w-full px-4 py-2 rounded-md border ${
                       errors.email ? "border-red-500" : "border-gray-300 dark:border-gray-600"
                     } focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
@@ -145,7 +149,9 @@ export default function Contact() {
                 </label>
                 <input
                   {...register("subject")}
+                  id="subject"
                   type="text"
+                  placeholder={t('subject')}
                   className={`w-full px-4 py-2 rounded-md border ${
                     errors.subject ? "border-red-500" : "border-gray-300 dark:border-gray-600"
                   } focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}
@@ -158,7 +164,9 @@ export default function Contact() {
                 </label>
                 <textarea
                   {...register("message")}
+                  id="message"
                   rows={4}
+                  placeholder={t('message')}
                   className={`w-full px-4 py-2 rounded-md border ${
                     errors.message ? "border-red-500" : "border-gray-300 dark:border-gray-600"
                   } focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white`}

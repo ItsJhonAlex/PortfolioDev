@@ -1,0 +1,16 @@
+# Navegadores modernos - reduce polyfills y código legacy
+# Esto eliminará gran parte del JavaScript heredado
+
+# Chrome, Firefox, Safari, Edge modernos
+> 1%
+last 2 versions
+not dead
+not ie 11
+not chrome < 60
+not firefox < 60
+not safari < 12
+not edge < 18
+
+# Soporte para ES6+ features
+supports es6-module
+supports es6-module-dynamic-import 
