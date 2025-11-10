@@ -141,8 +141,10 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/favico.png" type="image/png" />
+        <link rel="shortcut icon" href="/favico.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/favico.png" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/placeholder-logo.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Jonathan Portfolio" />

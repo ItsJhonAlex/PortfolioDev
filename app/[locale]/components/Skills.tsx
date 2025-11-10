@@ -6,9 +6,13 @@ import AnimatedSectionHeader from "./AnimatedSectionHeader"
 import { useTranslations } from "next-intl"
 
 const SkillIcon = ({ icon: Icon, color }: { icon: any; color: string }) => (
-  <div className={`p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg`}>
+  <motion.div 
+    className={`p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg`}
+    whileHover={{ scale: 1.2, rotate: 360 }}
+    transition={{ duration: 0.5 }}
+  >
     <Icon className={`w-6 h-6 ${color}`} />
-  </div>
+  </motion.div>
 )
 
 interface Skill {
@@ -43,23 +47,37 @@ export default function Skills() {
           {skillsConfig.map((skill, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 20, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                duration: 0.5, 
+                delay: index * 0.05,
+                ease: [0.25, 0.4, 0.25, 1]
+              }}
+              whileHover={{ 
+                y: -8,
+                transition: { duration: 0.2 }
+              }}
             >
-              <div className="p-6 rounded-xl shadow-lg card-backdrop card-hover">
+              <motion.div 
+                className="p-6 rounded-xl shadow-lg card-backdrop h-full"
+                whileHover={{
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+                  transition: { duration: 0.3 }
+                }}
+              >
                 <div className="flex items-center mb-4">
                   <SkillIcon icon={skill.icon} color={skill.color} />
                   <div className="ml-4">
-                    <h3 className="text-lg font-semibold dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                    <h3 className="text-lg font-semibold dark:text-white transition-colors duration-300">
                       {t(`${skill.key}.name`)}
                     </h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400">{t(`${skill.key}.tech`)}</p>
                   </div>
                 </div>
                 <p className="text-gray-700 dark:text-gray-300 text-sm">{t(`${skill.key}.description`)}</p>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>

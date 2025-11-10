@@ -1,9 +1,10 @@
 "use client"
 
 import Image from "next/image"
-import { GitlabIcon as GitHub, Linkedin, Mail, ArrowDown, Download } from "lucide-react"
-import { motion } from "framer-motion"
+import { Github, Twitter, Mail, ArrowDown, Download } from "lucide-react"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { useTranslations, useLocale } from "next-intl"
+import { useRef } from "react"
 
 const CodePattern = () => (
   <svg className="absolute inset-0 w-full h-full opacity-5" xmlns="http://www.w3.org/2000/svg">
@@ -25,11 +26,22 @@ const CodePattern = () => (
 export default function Hero() {
   const t = useTranslations('hero');
   const locale = useLocale();
+  const ref = useRef(null);
   
   const cvPath = locale === 'es' ? '/ItsJhonAlex_cv_es.pdf' : '/ItsJhonAlex_cv_en.pdf';
 
+  // Parallax effect
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+
   return (
     <section
+      ref={ref}
       id="hero"
       className="min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-indigo-900 dark:to-purple-900"
     >
@@ -38,12 +50,18 @@ export default function Hero() {
         <CodePattern />
       </div>
 
-      {/* Animated Gradient */}
-      <div className="absolute inset-0 z-0 opacity-30">
+      {/* Animated Gradient with Parallax */}
+      <motion.div 
+        className="absolute inset-0 z-0 opacity-30"
+        style={{ y }}
+      >
         <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 animate-gradient-x"></div>
-      </div>
+      </motion.div>
 
-      <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
+      <motion.div 
+        className="container mx-auto px-6 pt-32 pb-20 relative z-10"
+        style={{ opacity }}
+      >
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <motion.div
             className="lg:w-1/2 text-center lg:text-left"
@@ -61,29 +79,37 @@ export default function Hero() {
               {t('description')}
             </p>
             <div className="flex justify-center lg:justify-start space-x-4 mb-8">
-              <a
+              <motion.a
                 href="https://github.com/ItsJhonAlex"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl"
                 aria-label="GitHub Profile"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <GitHub className="w-6 h-6 text-gray-700 dark:text-gray-300" />
-              </a>
-              <a
-                href="#"
+                <Github className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+              </motion.a>
+              <motion.a
+                href="https://x.com/ItsJhonAlex"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl"
-                aria-label="LinkedIn Profile"
+                aria-label="X (Twitter) Profile"
+                whileHover={{ scale: 1.1, rotate: -5 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <Linkedin className="w-6 h-6 text-gray-700 dark:text-gray-300" />
-              </a>
-              <a
+                <Twitter className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+              </motion.a>
+              <motion.a
                 href="mailto:itsjhonalex@gmail.com"
                 className="p-3 rounded-full bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl"
                 aria-label="Email Contact"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <Mail className="w-6 h-6 text-gray-700 dark:text-gray-300" />
-              </a>
+              </motion.a>
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <motion.button
@@ -115,9 +141,36 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="relative w-72 h-72 md:w-96 md:h-96 mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-600 dark:to-purple-600 rounded-3xl transform rotate-6 opacity-50"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 dark:from-purple-600 dark:to-blue-600 rounded-3xl transform -rotate-6 opacity-50"></div>
-              <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-gray-800">
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-600 dark:to-purple-600 rounded-3xl opacity-50"
+                animate={{ 
+                  rotate: [6, 8, 6],
+                  scale: [1, 1.02, 1]
+                }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 dark:from-purple-600 dark:to-blue-600 rounded-3xl opacity-50"
+                animate={{ 
+                  rotate: [-6, -8, -6],
+                  scale: [1, 1.02, 1]
+                }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.2
+                }}
+              />
+              <motion.div 
+                className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-gray-800"
+                whileHover={{ scale: 1.05, rotate: 2 }}
+                transition={{ duration: 0.3 }}
+              >
                 <Image
                   src="/profile.png"
                   alt="Jonathan Rodríguez López"
@@ -126,11 +179,11 @@ export default function Hero() {
                   priority
                   sizes="(max-width: 768px) 288px, 384px"
                 />
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Decorative Elements */}
       <motion.div

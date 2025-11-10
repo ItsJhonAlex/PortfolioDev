@@ -5,7 +5,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { ModeToggle } from "@/components/mode-toggle"
 import LanguageSwitcher from "@/components/language-switcher"
 import { NextIntlClientProvider } from "next-intl"
-import LoadingScreen from "./LoadingScreen"
+import LoadingScreen, { LoadingType, ThemeType } from "./LoadingScreen"
+import { motion } from "framer-motion"
 
 export default function Providers({
   children,
@@ -22,48 +23,94 @@ export default function Providers({
   const [mounted, setMounted] = useState(false)
   // Estado para controlar la pantalla de carga
   const [isLoading, setIsLoading] = useState(true)
-  // Estado para rastrear cambios de tema o idioma
-  const [isTransitioning, setIsTransitioning] = useState(false)
-  // Estado para almacenar el idioma actual
-  const [currentLocale, setCurrentLocale] = useState(locale)
+  // Estado para el tipo de carga
+  const [loadingType, setLoadingType] = useState<LoadingType>('initial')
+  const [targetTheme, setTargetTheme] = useState<ThemeType>('light')
+  const [targetLocale, setTargetLocale] = useState(locale)
+  
+  // Detectar el tipo de carga al montar
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    
+    // Verificar si hay información de carga pendiente en sessionStorage
+    const loadingInfo = sessionStorage.getItem('loadingInfo')
+    
+    if (loadingInfo) {
+      try {
+        const info = JSON.parse(loadingInfo)
+        setLoadingType(info.type)
+        setTargetTheme(info.theme || 'light')
+        setTargetLocale(info.locale || locale)
+        
+        // Limpiar después de leer
+        sessionStorage.removeItem('loadingInfo')
+      } catch (e) {
+        console.error('Error parsing loading info:', e)
+      }
+    } else {
+      // Si no hay info, es una carga inicial real
+      setLoadingType('initial')
+    }
+  }, [])
+  
+  // Obtener mensajes de carga - usar useMemo para evitar recalcular innecesariamente
+  const getLoadingMessages = () => {
+    // Para cambio de idioma, usar los mensajes del idioma de destino
+    let messagesSource = messages
+    
+    if (loadingType === 'languageChange' && targetLocale !== locale) {
+      // Intentar cargar los mensajes del idioma de destino
+      try {
+        const targetMessages = require(`@/messages/${targetLocale}.json`)
+        messagesSource = targetMessages
+      } catch (e) {
+        // Si falla, usar los mensajes actuales
+        messagesSource = messages
+      }
+    }
+    
+    const loadingMessages = messagesSource.loading || {}
+    
+    switch (loadingType) {
+      case 'languageChange':
+        return {
+          title: targetLocale === 'es' ? 'Cambiando a Español' : 'Switching to English',
+          messages: loadingMessages.languageChange?.messages || []
+        }
+      case 'themeChange':
+        return {
+          title: loadingMessages.themeChange?.[targetTheme]?.title || 'Changing Theme',
+          messages: loadingMessages.themeChange?.[targetTheme]?.messages || []
+        }
+      case 'refresh':
+        return {
+          title: loadingMessages.refresh?.title || 'Reloading',
+          messages: loadingMessages.refresh?.messages || []
+        }
+      default:
+        return {
+          title: loadingMessages.initial?.title || 'Welcome',
+          messages: loadingMessages.initial?.messages || []
+        }
+    }
+  }
   
   // Efecto para manejar la carga inicial
   useEffect(() => {
-    // Simular tiempo de carga inicial
+    // Simular tiempo de carga
+    const duration = loadingType === 'initial' ? 2500 : 
+                     loadingType === 'languageChange' ? 2000 : 
+                     loadingType === 'themeChange' ? 1800 : 2000
+    
     const timer = setTimeout(() => {
       setIsLoading(false)
       setMounted(true)
-    }, 2000)
+    }, duration)
     
     return () => clearTimeout(timer)
-  }, [])
-  
-  // Efecto para detectar cambios de idioma
-  useEffect(() => {
-    if (mounted && locale !== currentLocale) {
-      setIsTransitioning(true)
-      setCurrentLocale(locale)
-      
-      // Simular tiempo de carga al cambiar idioma
-      const timer = setTimeout(() => {
-        setIsTransitioning(false)
-      }, 1500)
-      
-      return () => clearTimeout(timer)
-    }
-  }, [locale, mounted, currentLocale])
-  
-  // Función para manejar cambios de tema
-  const handleThemeChange = () => {
-    if (mounted) {
-      setIsTransitioning(true)
-      
-      // Simular tiempo de carga al cambiar tema
-      setTimeout(() => {
-        setIsTransitioning(false)
-      }, 1500)
-    }
-  }
+  }, [loadingType])
+
+  const loadingMessages = getLoadingMessages()
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages} timeZone={timeZone}>
@@ -72,59 +119,35 @@ export default function Providers({
         defaultTheme="system" 
         enableSystem 
         disableTransitionOnChange
-        // Eliminar la propiedad onThemeChange que causa el error
       >
         {/* Pantalla de carga inicial */}
         <LoadingScreen 
           isLoading={isLoading} 
-          onLoadingComplete={() => setMounted(true)} 
+          onLoadingComplete={() => setMounted(true)}
+          type={loadingType}
+          theme={targetTheme}
+          targetLocale={targetLocale}
+          messages={loadingMessages}
         />
         
-        {/* Pantalla de carga para transiciones */}
-        <LoadingScreen 
-          isLoading={isTransitioning} 
-          onLoadingComplete={() => setIsTransitioning(false)} 
-        />
-        
-        {/* Observar cambios de tema manualmente */}
-        {mounted && (
-          <ThemeObserver onThemeChange={handleThemeChange} />
-        )}
+
         
         <div className="min-h-screen">
           {/* Solo renderizar los controles de tema e idioma cuando el componente está montado */}
           {mounted && (
-            <div className="fixed top-4 right-4 flex items-center gap-2 z-50">
+            <motion.div 
+              className="fixed top-4 right-4 flex items-center gap-3 z-50"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
               <LanguageSwitcher />
               <ModeToggle />
-            </div>
+            </motion.div>
           )}
           {children}
         </div>
       </ThemeProvider>
     </NextIntlClientProvider>
   )
-}
-
-// Componente para observar cambios de tema
-function ThemeObserver({ onThemeChange }: { onThemeChange: () => void }) {
-  useEffect(() => {
-    // Observar cambios en el atributo de tema en el elemento html
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (
-          mutation.attributeName === "class" &&
-          mutation.target === document.documentElement
-        ) {
-          onThemeChange()
-        }
-      })
-    })
-    
-    observer.observe(document.documentElement, { attributes: true })
-    
-    return () => observer.disconnect()
-  }, [onThemeChange])
-  
-  return null
 }

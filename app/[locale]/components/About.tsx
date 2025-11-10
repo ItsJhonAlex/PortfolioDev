@@ -66,16 +66,29 @@ export default function About() {
             transition={{ duration: 0.5 }}
           >
             {skills.map((skill, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col items-center text-center h-full"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ 
+                  y: -10, 
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+                  transition: { duration: 0.3 }
+                }}
               >
-                <div className="mb-6">
+                <motion.div 
+                  className="mb-6"
+                  whileHover={{ scale: 1.2, rotate: 360 }}
+                  transition={{ duration: 0.5 }}
+                >
                   {skill.icon}
-                </div>
+                </motion.div>
                 <h3 className="text-xl font-semibold mb-4 dark:text-white">{skill.title}</h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{skill.description}</p>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>

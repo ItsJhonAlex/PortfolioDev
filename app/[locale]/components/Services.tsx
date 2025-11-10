@@ -55,15 +55,31 @@ export default function Services() {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="p-6 rounded-lg shadow-lg card-backdrop card-hover"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="p-6 rounded-lg shadow-lg card-backdrop group cursor-pointer"
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                duration: 0.6, 
+                delay: index * 0.1,
+                ease: [0.25, 0.4, 0.25, 1]
+              }}
+              whileHover={{ 
+                y: -10,
+                boxShadow: "0 25px 50px rgba(0,0,0,0.2)",
+                transition: { duration: 0.3 }
+              }}
             >
               <div className="flex items-center mb-4">
-                {service.icon}
-                <h3 className="text-2xl font-semibold ml-4 dark:text-white">{t(`${service.key}.title`)}</h3>
+                <motion.div
+                  whileHover={{ scale: 1.2, rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  {service.icon}
+                </motion.div>
+                <h3 className="text-2xl font-semibold ml-4 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                  {t(`${service.key}.title`)}
+                </h3>
               </div>
               <p className="text-gray-600 dark:text-gray-300">{t(`${service.key}.description`)}</p>
             </motion.div>

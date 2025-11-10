@@ -243,5 +243,69 @@
     "subjectError": "El asunto debe tener al menos 5 caracteres",
     "messageError": "El mensaje debe tener al menos 10 caracteres",
     "decorative": "Fondo decorativo"
+  },
+  "loading": {
+    "initial": {
+      "title": "Cargando",
+      "messages": [
+        "Inicializando...",
+        "Cargando componentes...",
+        "Configurando entorno...",
+        "Casi listo...",
+        "¡Listo!"
+      ]
+    },
+    "languageChange": {
+      "title": "Cambiando a Español",
+      "messages": [
+        "Cargando traducciones...",
+        "Actualizando contenido...",
+        "Aplicando cambios...",
+        "Finalizando...",
+        "¡Completado!"
+      ]
+    },
+    "themeChange": {
+      "light": {
+        "title": "Cambiando a Tema Claro",
+        "messages": [
+          "Ajustando colores...",
+          "Actualizando interfaz...",
+          "Aplicando tema...",
+          "Finalizando...",
+          "¡Listo!"
+        ]
+      },
+      "dark": {
+        "title": "Cambiando a Tema Oscuro",
+        "messages": [
+          "Ajustando colores...",
+          "Actualizando interfaz...",
+          "Aplicando tema...",
+          "Finalizando...",
+          "¡Listo!"
+        ]
+      },
+      "system": {
+        "title": "Cambiando a Tema del Sistema",
+        "messages": [
+          "Detectando preferencias...",
+          "Actualizando interfaz...",
+          "Aplicando tema...",
+          "Finalizando...",
+          "¡Listo!"
+        ]
+      }
+    },
+    "refresh": {
+      "title": "Recargando Página",
+      "messages": [
+        "Actualizando datos...",
+        "Cargando recursos...",
+        "Preparando contenido...",
+        "Casi listo...",
+        "¡Completado!"
+      ]
+    }
   }
 }

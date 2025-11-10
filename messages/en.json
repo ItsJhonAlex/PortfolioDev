@@ -239,5 +239,69 @@
     "subjectError": "Subject must be at least 5 characters",
     "messageError": "Message must be at least 10 characters",
     "decorative": "Decorative background"
+  },
+  "loading": {
+    "initial": {
+      "title": "Loading",
+      "messages": [
+        "Initializing...",
+        "Loading components...",
+        "Setting up environment...",
+        "Almost there...",
+        "Ready!"
+      ]
+    },
+    "languageChange": {
+      "title": "Switching to English",
+      "messages": [
+        "Loading translations...",
+        "Updating content...",
+        "Applying changes...",
+        "Finalizing...",
+        "Complete!"
+      ]
+    },
+    "themeChange": {
+      "light": {
+        "title": "Switching to Light Theme",
+        "messages": [
+          "Adjusting colors...",
+          "Updating interface...",
+          "Applying theme...",
+          "Finalizing...",
+          "Done!"
+        ]
+      },
+      "dark": {
+        "title": "Switching to Dark Theme",
+        "messages": [
+          "Adjusting colors...",
+          "Updating interface...",
+          "Applying theme...",
+          "Finalizing...",
+          "Done!"
+        ]
+      },
+      "system": {
+        "title": "Switching to System Theme",
+        "messages": [
+          "Detecting preferences...",
+          "Updating interface...",
+          "Applying theme...",
+          "Finalizing...",
+          "Done!"
+        ]
+      }
+    },
+    "refresh": {
+      "title": "Reloading Page",
+      "messages": [
+        "Updating data...",
+        "Loading resources...",
+        "Preparing content...",
+        "Almost ready...",
+        "Complete!"
+      ]
+    }
   }
 }

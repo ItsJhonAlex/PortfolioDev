@@ -64,29 +64,41 @@ export default function FloatingNav() {
   return (
     <motion.div
       className="fixed right-4 top-1/2 transform -translate-y-1/2 z-50"
-      initial={{ opacity: 0, x: 20 }}
+      initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: 1 }}
+      transition={{ delay: 1, duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
     >
       <div className="flex flex-col gap-3">
-        {sectionIds.map((id) => (
-          <button
+        {sectionIds.map((id, index) => (
+          <motion.button
             key={id}
             onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })}
             className="group relative flex items-center"
             aria-label={`Scroll to ${t(id)}`}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1.2 + index * 0.1 }}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
           >
-            <span className="absolute right-8 px-2 py-1 rounded bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <motion.span 
+              className="absolute right-8 px-2 py-1 rounded bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-sm whitespace-nowrap"
+              initial={{ opacity: 0, x: 10 }}
+              whileHover={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.2 }}
+            >
               {t(id)}
-            </span>
-            <div
+            </motion.span>
+            <motion.div
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 activeSection === id
-                  ? "bg-blue-600 dark:bg-blue-400 scale-125"
-                  : "bg-gray-400 dark:bg-gray-600 hover:scale-110"
+                  ? "bg-blue-600 dark:bg-blue-400"
+                  : "bg-gray-400 dark:bg-gray-600"
               }`}
+              animate={activeSection === id ? { scale: [1, 1.3, 1] } : {}}
+              transition={{ duration: 0.5 }}
             />
-          </button>
+          </motion.button>
         ))}
       </div>
     </motion.div>
