@@ -25,22 +25,12 @@ export default function LanguageSwitcher() {
   const handleLanguageChange = (newLocale: string) => {
     if (newLocale === locale) return
     
-    // Guardar información de carga en sessionStorage
-    sessionStorage.setItem('loadingInfo', JSON.stringify({
-      type: 'languageChange',
-      locale: newLocale,
-      timestamp: Date.now()
-    }))
-    
-    // Disparar evento personalizado para notificar cambio de idioma
-    const event = new CustomEvent("localeChange", { detail: { locale: newLocale } })
-    window.dispatchEvent(event)
-    
     // Obtener la ruta sin el prefijo de idioma
     const pathnameWithoutLocale = pathname.replace(`/${locale}`, "")
     
-    // Redirigir a la nueva ruta con el nuevo idioma
-    router.push(`/${newLocale}${pathnameWithoutLocale}`)
+    // Usar replace en lugar de push para evitar agregar al historial
+    // y scroll: false para mantener la posición
+    router.replace(`/${newLocale}${pathnameWithoutLocale}`, { scroll: false })
   }
 
   const currentLanguage = languages.find(lang => lang.code === locale)

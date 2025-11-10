@@ -16,20 +16,9 @@ import {
 export function ModeToggle() {
   const { setTheme, theme } = useTheme()
 
-  // Función para manejar el cambio de tema con evento personalizado
+  // Función para manejar el cambio de tema
   const handleThemeChange = (newTheme: string) => {
-    // Guardar información de carga en sessionStorage
-    sessionStorage.setItem('loadingInfo', JSON.stringify({
-      type: 'themeChange',
-      theme: newTheme,
-      timestamp: Date.now()
-    }))
-    
     setTheme(newTheme)
-    
-    // Disparar evento personalizado para notificar cambio de tema
-    const event = new CustomEvent("themeChange", { detail: { theme: newTheme } })
-    window.dispatchEvent(event)
   }
 
   return (
