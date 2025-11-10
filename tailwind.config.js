@@ -8,14 +8,8 @@ module.exports = {
     "./lib/**/*.{js,ts,jsx,tsx,mdx}",
     "./utils/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  // Safelist para Tailwind v3.0
+  // Safelist para clases dinámicas específicas
   safelist: [
-    // Clases dinámicas de theme
-    { pattern: /^bg-/ },
-    { pattern: /^text-/ },
-    { pattern: /^border-/ },
-    { pattern: /^hover:/ },
-    { pattern: /^dark:/ },
     // Animaciones críticas
     'animate-spin', 
     'animate-pulse', 
@@ -24,7 +18,14 @@ module.exports = {
     'border-red-500', 
     'border-green-500', 
     'text-red-500', 
-    'text-green-500'
+    'text-green-500',
+    // Colores específicos que se usan dinámicamente
+    'text-blue-500',
+    'text-green-500',
+    'text-purple-500',
+    'text-yellow-500',
+    'text-blue-600',
+    'dark:text-blue-400'
   ],
   theme: {
     extend: {

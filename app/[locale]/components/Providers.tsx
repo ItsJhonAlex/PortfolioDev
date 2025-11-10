@@ -11,10 +11,12 @@ export default function Providers({
   children,
   locale,
   messages,
+  timeZone = 'America/Havana',
 }: {
   children: React.ReactNode
   locale: string
   messages: any
+  timeZone?: string
 }) {
   // Estado para controlar si el componente está montado
   const [mounted, setMounted] = useState(false)
@@ -64,7 +66,7 @@ export default function Providers({
   }
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
+    <NextIntlClientProvider locale={locale} messages={messages} timeZone={timeZone}>
       <ThemeProvider 
         attribute="class" 
         defaultTheme="system" 

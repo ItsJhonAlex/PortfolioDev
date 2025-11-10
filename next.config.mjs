@@ -27,16 +27,6 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  // Optimizaciones más simples y compatibles
-  webpack: (config) => {
-    // Optimización simple sin problemas de ES modules
-    config.optimization = {
-      ...config.optimization,
-      usedExports: true,
-      sideEffects: false,
-    }
-    return config
-  },
 };
 
 function mergeConfig(nextConfig, userConfig) {

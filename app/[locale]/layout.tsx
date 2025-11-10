@@ -151,7 +151,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       </head>
       <body className={`${inter.className} animated-gradient min-h-screen`} suppressHydrationWarning>
         <GoogleAnalytics GA_TRACKING_ID={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
-        <Providers locale={locale} messages={messages.default}>
+        <Providers locale={locale} messages={messages.default} timeZone="America/Havana">
           {children}
         </Providers>
       </body>

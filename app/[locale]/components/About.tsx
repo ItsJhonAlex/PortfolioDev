@@ -43,9 +43,9 @@ export default function About() {
         >
           {t('title')}
         </motion.h2>
-        <div className="flex flex-col md:flex-row items-center justify-between">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-12">
           <motion.div
-            className="md:w-1/2 mb-8 md:mb-0"
+            className="md:w-1/2 mb-8 md:mb-0 md:pr-6 lg:pr-8"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -59,7 +59,7 @@ export default function About() {
             </p>
           </motion.div>
           <motion.div
-            className="md:w-1/2 grid grid-cols-2 gap-6"
+            className="md:w-1/2 grid grid-cols-2 gap-6 md:pl-6 lg:pl-8"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}

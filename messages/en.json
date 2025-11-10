@@ -7,6 +7,7 @@
   },
   "nav": {
     "home": "Home",
+    "hero": "Home",
     "about": "About",
     "experience": "Experience",
     "skills": "Skills",
@@ -14,8 +15,7 @@
     "projects": "Projects",
     "collaborations": "Collaborations",
     "education": "Education",
-    "contact": "Contact",
-    "hero": "Hero"
+    "contact": "Contact"
   },
   "metadata": {
     "title": "Jonathan Rodríguez López - Full Stack Developer | React, Node.js, Python",
