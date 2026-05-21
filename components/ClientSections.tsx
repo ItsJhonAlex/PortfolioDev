@@ -13,35 +13,35 @@ function LoadingIndicator() {
 }
 
 // Componentes cargados de forma perezosa más agresiva
-const About = dynamic(() => import('./About'), { 
+const About = dynamic(() => import('@/sections/About'), { 
   ssr: false,
   loading: () => <LoadingIndicator />
 })
-const Experience = dynamic(() => import('./Experience'), { 
+const Experience = dynamic(() => import('@/sections/Experience'), { 
   ssr: false,
   loading: () => <LoadingIndicator />
 })
-const Skills = dynamic(() => import('./Skills'), { 
+const Skills = dynamic(() => import('@/sections/Skills'), { 
   ssr: false,
   loading: () => <LoadingIndicator />
 })
-const Services = dynamic(() => import('./Services'), { 
+const Services = dynamic(() => import('@/sections/Services'), { 
   ssr: false,
   loading: () => <LoadingIndicator />
 })
-const PersonalProjects = dynamic(() => import('./PersonalProjects'), { 
+const PersonalProjects = dynamic(() => import('@/sections/PersonalProjects'), { 
   ssr: false,
   loading: () => <LoadingIndicator />
 })
-const Collaborations = dynamic(() => import('./Collaborations'), { 
+const Collaborations = dynamic(() => import('@/sections/Collaborations'), { 
   ssr: false,
   loading: () => <LoadingIndicator />
 })
-const Education = dynamic(() => import('./Education'), { 
+const Education = dynamic(() => import('@/sections/Education'), { 
   ssr: false,
   loading: () => <LoadingIndicator />
 })
-const Contact = dynamic(() => import('./Contact'), { 
+const Contact = dynamic(() => import('@/sections/Contact'), { 
   ssr: false,
   loading: () => <LoadingIndicator />
 })

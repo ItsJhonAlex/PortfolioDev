@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Users, Calendar, ExternalLink } from "lucide-react"
 import Image from "next/image"
-import AnimatedSectionHeader from "./AnimatedSectionHeader"
+import AnimatedSectionHeader from "@/components/AnimatedSectionHeader"
 import { useTranslations } from "next-intl"
 
 interface Collaboration {

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Code, Database, Server, Layout, GitBranch, Terminal, Layers, Cpu, Globe, Workflow, Zap, Brain } from "lucide-react"
-import AnimatedSectionHeader from "./AnimatedSectionHeader"
+import AnimatedSectionHeader from "@/components/AnimatedSectionHeader"
 import { useTranslations } from "next-intl"
 
 const SkillIcon = ({ icon: Icon, color }: { icon: any; color: string }) => (

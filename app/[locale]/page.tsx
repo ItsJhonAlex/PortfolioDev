@@ -1,7 +1,7 @@
-import Hero from "./components/Hero"
-import FloatingNav from "./components/floating-nav"
-import StructuredData from "./components/StructuredData"
-import ClientSections from "./components/ClientSections"
+import Hero from "@/sections/Hero"
+import FloatingNav from "@/components/FloatingNav"
+import StructuredData from "@/components/StructuredData"
+import ClientSections from "@/components/ClientSections"
 import { getTranslations } from 'next-intl/server'
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {

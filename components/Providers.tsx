@@ -1,11 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ThemeProvider } from "@/components/theme-provider"
-import { ModeToggle } from "@/components/mode-toggle"
-import LanguageSwitcher from "@/components/language-switcher"
+import { ThemeProvider } from "@/components/ThemeProvider"
+import { ModeToggle } from "@/components/ModeToggle"
+import LanguageSwitcher from "@/components/LanguageSwitcher"
 import { NextIntlClientProvider } from "next-intl"
-import LoadingScreen from "./LoadingScreen"
+import LoadingScreen from "@/components/LoadingScreen"
 import { motion } from "framer-motion"
 
 export default function Providers({

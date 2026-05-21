@@ -3,7 +3,7 @@
 import { Briefcase, Calendar, MapPin, Globe } from "lucide-react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import AnimatedSectionHeader from "./AnimatedSectionHeader"
+import AnimatedSectionHeader from "@/components/AnimatedSectionHeader"
 import { useTranslations } from "next-intl"
 
 interface Experience {
