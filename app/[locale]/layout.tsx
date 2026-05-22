@@ -3,11 +3,34 @@ import {notFound} from 'next/navigation';
 import {Metadata} from 'next';
 import Providers from '@/components/Providers';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
-import {Inter} from "next/font/google"
+import {Inter, Fraunces, JetBrains_Mono, Caveat} from "next/font/google"
 import {locales} from '@/config';
 import {setRequestLocale} from 'next-intl/server';
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+})
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  display: "swap",
+  axes: ["SOFT", "WONK", "opsz"],
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+})
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-caveat",
+  display: "swap",
+})
 
 type Props = {
   children: React.ReactNode;
@@ -139,7 +162,11 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await import(`@/messages/${locale}.json`);
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html
+      lang={locale}
+      className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable} ${caveat.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <link rel="icon" href="/favico.png" type="image/png" />
         <link rel="shortcut icon" href="/favico.png" type="image/png" />
@@ -149,9 +176,9 @@ export default async function LocaleLayout({ children, params }: Props) {
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Jonathan Portfolio" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="theme-color" content="#3b82f6" />
+        <meta name="theme-color" content="#f1ebe1" />
       </head>
-      <body className={`${inter.className} animated-gradient min-h-screen`} suppressHydrationWarning>
+      <body className="min-h-screen" suppressHydrationWarning>
         <GoogleAnalytics GA_TRACKING_ID={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         <Providers locale={locale} messages={messages.default} timeZone="America/Havana">
           {children}

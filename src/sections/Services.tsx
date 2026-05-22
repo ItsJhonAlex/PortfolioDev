@@ -1,91 +1,60 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Code, Layout, Server, Smartphone, Zap, Brain } from "lucide-react"
-import { useTranslations } from "next-intl"
+import { Brain, Code, Layout, Server, Smartphone, Zap } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
+import SectionHeading from "@/components/SectionHeading";
+import ServicePostcard from "@/components/ServicePostcard";
 
-interface Service {
-  icon: JSX.Element
-  key: string
-}
+type ServiceConfig = {
+  key: string;
+  Icon: LucideIcon;
+  iconColorClass: string;
+  number: string;
+  rotation: number;
+};
+
+const SERVICES: ServiceConfig[] = [
+  { key: "web",        Icon: Layout,     iconColorClass: "text-blue-600",    number: "01", rotation: -1.2 },
+  { key: "backend",    Icon: Server,     iconColorClass: "text-emerald-600", number: "02", rotation: 1.5 },
+  { key: "api",        Icon: Code,       iconColorClass: "text-purple-600",  number: "03", rotation: -0.8 },
+  { key: "responsive", Icon: Smartphone, iconColorClass: "text-amber-600",   number: "04", rotation: 1.2 },
+  { key: "web3",       Icon: Zap,        iconColorClass: "text-orange-600",  number: "05", rotation: -1 },
+  { key: "ai",         Icon: Brain,      iconColorClass: "text-emerald-700", number: "06", rotation: 0.6 },
+];
 
 export default function Services() {
-  const t = useTranslations('services')
-
-  const services: Service[] = [
-    {
-      icon: <Layout className="w-12 h-12 text-blue-500" />,
-      key: "web",
-    },
-    {
-      icon: <Server className="w-12 h-12 text-green-500" />,
-      key: "backend",
-    },
-    {
-      icon: <Code className="w-12 h-12 text-purple-500" />,
-      key: "api",
-    },
-    {
-      icon: <Smartphone className="w-12 h-12 text-yellow-500" />,
-      key: "responsive",
-    },
-    {
-      icon: <Zap className="w-12 h-12 text-amber-500" />,
-      key: "web3",
-    },
-    {
-      icon: <Brain className="w-12 h-12 text-emerald-500" />,
-      key: "ai",
-    },
-  ]
+  const t = useTranslations("services");
 
   return (
-    <section id="services" className="py-20 overflow-hidden relative">
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.h2
-          className="text-4xl font-bold mb-12 text-center dark:text-white"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          {t('title')}
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              className="p-6 rounded-lg shadow-lg card-backdrop group cursor-pointer"
-              initial={{ opacity: 0, y: 50, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ 
-                duration: 0.6, 
-                delay: index * 0.1,
-                ease: [0.25, 0.4, 0.25, 1]
-              }}
-              whileHover={{ 
-                y: -10,
-                boxShadow: "0 25px 50px rgba(0,0,0,0.2)",
-                transition: { duration: 0.3 }
-              }}
-            >
-              <div className="flex items-center mb-4">
-                <motion.div
-                  whileHover={{ scale: 1.2, rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  {service.icon}
-                </motion.div>
-                <h3 className="text-2xl font-semibold ml-4 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                  {t(`${service.key}.title`)}
-                </h3>
-              </div>
-              <p className="text-gray-600 dark:text-gray-300">{t(`${service.key}.description`)}</p>
-            </motion.div>
+    <section
+      id="services"
+      aria-labelledby="services-title"
+      className="border-dashed-coffee relative overflow-hidden bg-cafe-base py-24 text-cafe-ink"
+    >
+      <div className="container relative z-10 mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+        <SectionHeading chapter={t("chapter")} title={t("headingTitle")} />
+
+        <span id="services-title" className="sr-only">
+          {t("title")}
+        </span>
+
+        <div className="mt-14 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+          {SERVICES.map((svc, i) => (
+            <ServicePostcard
+              key={svc.key}
+              Icon={svc.Icon}
+              iconColorClass={svc.iconColorClass}
+              number={svc.number}
+              tag={t(`${svc.key}.tag`)}
+              title={t(`${svc.key}.title`)}
+              description={t(`${svc.key}.description`)}
+              rotation={svc.rotation}
+              index={i}
+            />
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

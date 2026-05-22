@@ -1,87 +1,52 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Code, Database, Server, Layout, GitBranch, Terminal, Layers, Cpu, Globe, Workflow, Zap, Brain } from "lucide-react"
-import AnimatedSectionHeader from "@/components/AnimatedSectionHeader"
-import { useTranslations } from "next-intl"
+import { useTranslations } from "next-intl";
+import MenuBoard, {
+  type MenuCategoryData,
+} from "@/components/MenuBoard";
+import SectionHeading from "@/components/SectionHeading";
 
-const SkillIcon = ({ icon: Icon, color }: { icon: any; color: string }) => (
-  <motion.div 
-    className={`p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg`}
-    whileHover={{ scale: 1.2, rotate: 360 }}
-    transition={{ duration: 0.5 }}
-  >
-    <Icon className={`w-6 h-6 ${color}`} />
-  </motion.div>
-)
+type CategoryKey = "frontend" | "backend" | "tooling" | "emerging";
 
-interface Skill {
-  icon: any
-  key: string
-  color: string
-}
-
-const skillsConfig: Skill[] = [
-  { icon: Code, key: "frontend", color: "text-blue-500" },
-  { icon: Server, key: "backend", color: "text-green-500" },
-  { icon: Database, key: "database", color: "text-purple-500" },
-  { icon: Layout, key: "ui", color: "text-pink-500" },
-  { icon: GitBranch, key: "git", color: "text-orange-500" },
-  { icon: Terminal, key: "typescript", color: "text-yellow-500" },
-  { icon: Layers, key: "state", color: "text-indigo-500" },
-  { icon: Cpu, key: "api", color: "text-red-500" },
-  { icon: Globe, key: "performance", color: "text-teal-500" },
-  { icon: Workflow, key: "agile", color: "text-cyan-500" },
-  { icon: Zap, key: "web3", color: "text-amber-500" },
-  { icon: Brain, key: "ai", color: "text-emerald-500" },
-]
+const CATEGORY_GROUPS: { key: CategoryKey; skills: string[] }[] = [
+  { key: "frontend", skills: ["frontend", "ui", "state"] },
+  { key: "backend", skills: ["backend", "database", "api"] },
+  { key: "tooling", skills: ["git", "typescript", "performance", "agile"] },
+  { key: "emerging", skills: ["web3", "ai"] },
+];
 
 export default function Skills() {
-  const t = useTranslations('skills')
+  const t = useTranslations("skills");
+
+  const categories: MenuCategoryData[] = CATEGORY_GROUPS.map((group) => ({
+    label: t(`categories.${group.key}`),
+    items: group.skills.map((skill) => ({
+      label: t(`${skill}.name`),
+      tech: t(`${skill}.tech`),
+    })),
+  }));
 
   return (
-    <section id="skills" className="py-20 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
-        <AnimatedSectionHeader title={t('title')} />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillsConfig.map((skill, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ 
-                duration: 0.5, 
-                delay: index * 0.05,
-                ease: [0.25, 0.4, 0.25, 1]
-              }}
-              whileHover={{ 
-                y: -8,
-                transition: { duration: 0.2 }
-              }}
-            >
-              <motion.div 
-                className="p-6 rounded-xl shadow-lg card-backdrop h-full"
-                whileHover={{
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
-                  transition: { duration: 0.3 }
-                }}
-              >
-                <div className="flex items-center mb-4">
-                  <SkillIcon icon={skill.icon} color={skill.color} />
-                  <div className="ml-4">
-                    <h3 className="text-lg font-semibold dark:text-white transition-colors duration-300">
-                      {t(`${skill.key}.name`)}
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{t(`${skill.key}.tech`)}</p>
-                  </div>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300 text-sm">{t(`${skill.key}.description`)}</p>
-              </motion.div>
-            </motion.div>
-          ))}
+    <section
+      id="skills"
+      aria-labelledby="skills-title"
+      className="border-dashed-coffee relative overflow-hidden bg-cafe-base py-24 text-cafe-ink"
+    >
+      <div className="container relative z-10 mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+        <SectionHeading chapter={t("chapter")} title={t("headingTitle")} />
+
+        <span id="skills-title" className="sr-only">
+          {t("title")}
+        </span>
+
+        <div className="mt-12">
+          <MenuBoard
+            title={t("boardTitle")}
+            subtitle={t("boardSubtitle")}
+            categories={categories}
+          />
         </div>
       </div>
     </section>
-  )
+  );
 }

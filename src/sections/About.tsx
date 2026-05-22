@@ -1,101 +1,100 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Code, Database, Server, Zap } from "lucide-react"
-import Image from "next/image"
-import { useTranslations } from 'next-intl'
+import { motion, useReducedMotion } from "framer-motion";
+import { Code, Database, Server, Zap } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
+import SectionHeading from "@/components/SectionHeading";
+import SkillCard, { type StickyColor } from "@/components/SkillCard";
+
+type SkillKey = "frontend" | "backend" | "database" | "performance";
+
+type SkillConfig = {
+  key: SkillKey;
+  Icon: LucideIcon;
+  iconColorClass: string;
+  variant: StickyColor;
+  rotation: number;
+};
+
+const SKILLS: SkillConfig[] = [
+  { key: "frontend", Icon: Code, iconColorClass: "text-blue-600", variant: "yellow", rotation: -2 },
+  { key: "backend", Icon: Server, iconColorClass: "text-emerald-600", variant: "pink", rotation: 1.5 },
+  { key: "database", Icon: Database, iconColorClass: "text-purple-600", variant: "green", rotation: -1 },
+  { key: "performance", Icon: Zap, iconColorClass: "text-amber-600", variant: "blue", rotation: 2 },
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const reducedFade = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
 
 export default function About() {
-  const t = useTranslations('about');
-
-  const skills = [
-    { 
-      icon: <Code className="w-8 h-8 text-blue-500" />, 
-      title: t('skills.frontend.title'), 
-      description: t('skills.frontend.description') 
-    },
-    { 
-      icon: <Server className="w-8 h-8 text-green-500" />, 
-      title: t('skills.backend.title'), 
-      description: t('skills.backend.description') 
-    },
-    { 
-      icon: <Database className="w-8 h-8 text-purple-500" />, 
-      title: t('skills.database.title'), 
-      description: t('skills.database.description') 
-    },
-    { 
-      icon: <Zap className="w-8 h-8 text-yellow-500" />, 
-      title: t('skills.performance.title'), 
-      description: t('skills.performance.description') 
-    },
-  ]
+  const t = useTranslations("about");
+  const reduceMotion = useReducedMotion();
+  const itemVariants = reduceMotion ? reducedFade : fadeUp;
 
   return (
-    <section id="about" className="py-20 overflow-hidden relative">
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.h2
-          className="text-4xl font-bold mb-8 text-center dark:text-white"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          {t('title')}
-        </motion.h2>
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-12">
+    <section
+      id="about"
+      aria-labelledby="about-title"
+      className="border-dashed-coffee relative overflow-hidden bg-cafe-base py-24 text-cafe-ink"
+    >
+      <div className="container relative z-10 mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+        <SectionHeading chapter={t("chapter")} title={t("headingTitle")} />
+
+        <span id="about-title" className="sr-only">
+          {t("title")}
+        </span>
+
+        <div className="mt-12 grid gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* Left — description paragraphs */}
           <motion.div
-            className="md:w-1/2 mb-8 md:mb-0 md:pr-6 lg:pr-8"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ staggerChildren: 0.15, delayChildren: 0.1 }}
+            className="flex max-w-prose flex-col gap-5"
           >
-            <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-justify">
-              {t('description1')}
-            </p>
-            <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
-              {t('description2')}
-            </p>
+            <motion.p
+              variants={itemVariants}
+              transition={{ duration: 0.5 }}
+              className="text-base leading-relaxed text-cafe-mute"
+            >
+              {t("description1")}
+            </motion.p>
+            <motion.p
+              variants={itemVariants}
+              transition={{ duration: 0.5 }}
+              className="text-base leading-relaxed text-cafe-mute"
+            >
+              {t("description2")}
+            </motion.p>
           </motion.div>
-          <motion.div
-            className="md:w-1/2 grid grid-cols-2 gap-6 md:pl-6 lg:pl-8"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            {skills.map((skill, index) => (
-              <motion.div
-                key={index}
-                className="p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col items-center text-center h-full"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ 
-                  y: -10, 
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
-                  transition: { duration: 0.3 }
-                }}
-              >
-                <motion.div 
-                  className="mb-6"
-                  whileHover={{ scale: 1.2, rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  {skill.icon}
-                </motion.div>
-                <h3 className="text-xl font-semibold mb-4 dark:text-white">{skill.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{skill.description}</p>
-              </motion.div>
+
+          {/* Right — 2x2 sticky note cards */}
+          <div className="grid grid-cols-1 gap-x-6 gap-y-8 pt-2 sm:grid-cols-2">
+            {SKILLS.map(({ key, Icon, iconColorClass, variant, rotation }, i) => (
+              <SkillCard
+                key={key}
+                Icon={Icon}
+                iconColorClass={iconColorClass}
+                title={t(`skills.${key}.title`)}
+                tech={t(`skills.${key}.tech`)}
+                blurb={t(`skills.${key}.blurb`)}
+                variant={variant}
+                rotation={rotation}
+                index={i}
+              />
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
-      <div className="absolute bottom-0 right-0 w-64 h-64 -mb-32 -mr-32 opacity-20">
-        <Image src="/placeholder.svg?height=256&width=256" alt="Decorative background" width={256} height={256} />
-      </div>
     </section>
-  )
+  );
 }

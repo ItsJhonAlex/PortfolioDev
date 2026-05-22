@@ -2,101 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  @apply text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-900 transition-colors duration-300;
-}
-
-@layer utilities {
-  .animate-gradient-x {
-    animation: gradient-x 15s ease infinite;
-  }
-
-  @keyframes gradient-x {
-    0%,
-    100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-2;
-  }
-
-  .card-backdrop {
-    @apply backdrop-blur-sm bg-white/70 dark:bg-gray-800/70;
-  }
-}
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Café palette — light "morning café" */
+    --cafe-base: #f1ebe1;
+    --cafe-elev: #faf6ef;
+    --cafe-ink: #2d2620;
+    --cafe-mute: #5a4d3f;
+    --cafe-accent: #8b6f47;
+    --cafe-sticky: #fff8d6;
+    --cafe-pin: #d97757;
+    --cafe-border: #c8b89e;
+    --cafe-shadow: #8b6f47;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 215 20.2% 65.1%;
-
+    /* shadcn tokens mapped onto café (HSL space-separated for opacity modifiers) */
+    --background: 36 33% 91%;
+    --foreground: 30 18% 15%;
+    --card: 36 47% 96%;
+    --card-foreground: 30 18% 15%;
+    --popover: 36 47% 96%;
+    --popover-foreground: 30 18% 15%;
+    --primary: 30 18% 15%;
+    --primary-foreground: 36 33% 91%;
+    --secondary: 36 47% 96%;
+    --secondary-foreground: 30 18% 15%;
+    --muted: 33 28% 70%;
+    --muted-foreground: 31 18% 30%;
+    --accent: 31 32% 41%;
+    --accent-foreground: 36 33% 91%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 36 33% 91%;
+    --border: 33 28% 70%;
+    --input: 33 28% 70%;
+    --ring: 15 64% 60%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Café palette — dark "late night café" */
+    --cafe-base: #1c1814;
+    --cafe-elev: #2a231b;
+    --cafe-ink: #f4d4a0;
+    --cafe-mute: #b89968;
+    --cafe-accent: #d97757;
+    --cafe-sticky: #3a2f24;
+    --cafe-pin: #d97757;
+    --cafe-border: #5d4a32;
+    --cafe-shadow: #d97757;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
-
-    --ring: 217.2 32.6% 17.5%;
+    --background: 30 17% 9%;
+    --foreground: 36 78% 79%;
+    --card: 28 21% 14%;
+    --card-foreground: 36 78% 79%;
+    --popover: 28 21% 14%;
+    --popover-foreground: 36 78% 79%;
+    --primary: 36 78% 79%;
+    --primary-foreground: 30 17% 9%;
+    --secondary: 28 21% 14%;
+    --secondary-foreground: 36 78% 79%;
+    --muted: 33 30% 28%;
+    --muted-foreground: 36 38% 56%;
+    --accent: 15 64% 60%;
+    --accent-foreground: 30 17% 9%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 36 78% 79%;
+    --border: 33 30% 28%;
+    --input: 33 30% 28%;
+    --ring: 15 64% 60%;
   }
 }
 
@@ -105,75 +77,57 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-cafe-base text-cafe-ink;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    position: relative;
+  }
+
+  /* Static grain overlay over the whole body */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.4 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 }
 
-/* Animated gradient background */
-.animated-gradient {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
+@layer utilities {
+  /* Dashed coffee border — used as bottom accent on Hero */
+  .border-dashed-coffee {
+    border-bottom: 4px dashed transparent;
+    border-image: repeating-linear-gradient(
+        90deg,
+        var(--cafe-border) 0 8px,
+        transparent 8px 16px
+      )
+      1;
   }
-  50% {
-    background-position: 100% 50%;
+
+  /* Sticky note paper texture (subtle) */
+  .sticky-paper {
+    background-color: var(--cafe-sticky);
+    background-image: radial-gradient(
+      rgba(139, 111, 71, 0.08) 1px,
+      transparent 1px
+    );
+    background-size: 8px 8px;
   }
-  100% {
-    background-position: 0% 50%;
+
+  .sticky-paper-dark {
+    background-color: var(--cafe-sticky);
+    border: 1px dashed var(--cafe-accent);
   }
-}
 
-/* 3D Card effect */
-.card-3d {
-  transition: all 0.3s ease;
-}
-
-.card-3d:hover {
-  transform: translateY(-5px) rotateX(5deg) rotateY(5deg);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Micro-interactions */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
+  /* Focus ring (a11y) */
+  .focus-cafe {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cafe-pin focus-visible:ring-offset-2 focus-visible:ring-offset-cafe-base;
   }
 }
-
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
-  }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-/* Smooth transitions for theme changes */
-* {
-  transition-property: background-color, border-color, color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 200ms;
-}
-

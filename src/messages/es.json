@@ -30,28 +30,48 @@
     "role": "Desarrollador Full Stack",
     "description": "Apasionado creador de soluciones digitales innovadoras con enfoque integral, desde arquitectura backend hasta experiencias frontend cautivadoras y automatización de procesos. Dominio avanzado en ecosistemas JavaScript, Python, React y Node.js, complementado con un arsenal de tecnologías modernas para construir aplicaciones robustas y escalables.",
     "more": "Leer más",
-    "downloadCV": "Descargar CV"
+    "downloadCV": "Descargar CV",
+    "statusAvailable": "disponible para freelance",
+    "statusBusy": "enfocado ahora",
+    "nowPlayingPrefix": "sonando",
+    "roleLine": "// jonathan rodríguez · la habana, cu",
+    "sloganLine1": "construyendo cosas,",
+    "sloganLine2": "un commit a la vez.",
+    "tagline": "Full stack engineer creando apps web, explorando web3 e IA.",
+    "ctaExplore": "explorar →",
+    "ctaResume": "cv ↓",
+    "stickyHeading": "nota:",
+    "stickyBody": "construyamos\nalgo\nbonito ✿",
+    "ariaTitle": "Jonathan Rodríguez López — Desarrollador Full Stack",
+    "ariaNowPlaying": "Sonando",
+    "ariaStickyNote": "Nota personal"
   },
   "about": {
     "title": "Sobre Mí",
+    "chapter": "02",
+    "headingTitle": "sobre mí.",
     "description1": "Desarrollador versátil y apasionado por la creación de soluciones innovadoras, desde el diseño del backend y frontend hasta la automatización de procesos. Con experiencia en el desarrollo de aplicaciones web escalables y eficientes utilizando JavaScript, Python, React, Node.js y otras tecnologías modernas.",
     "description2": "Interesado en explorar el potencial de la Web3 y contribuir a su desarrollo. Amplia experiencia en la gestión de proyectos, incluyendo roles como Project Manager, gestión contable y empresarial, asegurando la calidad (Q&A) y la optimización de procesos con herramientas como Odoo y WordPress.",
     "skills": {
       "frontend": {
         "title": "Frontend",
-        "description": "React, Next.js, Redux"
+        "tech": "React · Next · Redux",
+        "blurb": "Interfaces modernas con atención al detalle."
       },
       "backend": {
         "title": "Backend",
-        "description": "Node.js, Express, Fastify"
+        "tech": "Node · Express · Fastify",
+        "blurb": "Servicios escalables y APIs limpias."
       },
       "database": {
         "title": "Base de Datos",
-        "description": "MongoDB, Mongoose"
+        "tech": "MongoDB · Mongoose",
+        "blurb": "Diseño de esquemas, índices y consultas."
       },
       "performance": {
         "title": "Rendimiento",
-        "description": "Optimización, Caché"
+        "tech": "Cache · Optimización",
+        "blurb": "Cargas en menos de un segundo."
       }
     }
   },
@@ -71,21 +91,36 @@
   },
   "experience": {
     "title": "Experiencia",
+    "chapter": "03",
+    "headingTitle": "experiencia.",
+    "current": "actual",
+    "nextChapter": "siguiente capítulo →",
     "company0": "Freelance",
-    "location0": "Habana, Cuba",
+    "yearLabel0": "2020 →",
+    "location0": "la habana, cu",
     "period0": "2020 - Presente",
     "role0": "Desarrollador Full Stack",
     "responsibilities0": [
-      "Desarrollo de aplicaciones web escalables utilizando React, Node.js y MongoDB",
-      "Implementación de soluciones de automatización para optimizar procesos empresariales",
-      "Gestión de proyectos y coordinación con equipos multidisciplinarios",
-      "Desarrollo e integración de APIs para conectar diferentes servicios y sistemas",
-      "Optimización de rendimiento y experiencia de usuario en aplicaciones web"
+      "Apps web escalables con React, Node.js, MongoDB",
+      "Soluciones de automatización para procesos empresariales",
+      "Coordinación de proyectos con equipos multidisciplinarios",
+      "Diseño de APIs e integraciones",
+      "Optimización de rendimiento y experiencia de usuario"
     ]
   },
 
   "skills": {
     "title": "Habilidades",
+    "chapter": "04",
+    "headingTitle": "habilidades.",
+    "boardTitle": "— el menú —",
+    "boardSubtitle": "recién preparado desde 2020",
+    "categories": {
+      "frontend": "frontend",
+      "backend": "backend y datos",
+      "tooling": "herramientas",
+      "emerging": "emergentes"
+    },
     "frontend": {
       "name": "Frontend",
       "tech": "React, Next.js, Vue.js",
@@ -97,17 +132,17 @@
       "description": "Construcción de APIs robustas y servicios escalables para aplicaciones web."
     },
     "database": {
-      "name": "Bases de Datos",
+      "name": "Datos",
       "tech": "MongoDB, MySQL, PostgreSQL",
       "description": "Diseño e implementación de soluciones de almacenamiento eficientes."
     },
     "ui": {
-      "name": "Diseño UI/UX",
+      "name": "UI / UX",
       "tech": "Tailwind CSS, Material UI, Figma",
       "description": "Creación de experiencias de usuario atractivas y funcionales."
     },
     "git": {
-      "name": "Control de Versiones",
+      "name": "Git",
       "tech": "Git, GitHub, GitLab",
       "description": "Gestión eficiente del código fuente y colaboración en equipo."
     },
@@ -117,32 +152,32 @@
       "description": "Desarrollo de aplicaciones con tipado estático para mayor robustez."
     },
     "state": {
-      "name": "Gestión de Estado",
+      "name": "Estado",
       "tech": "Redux, Context API, Zustand",
       "description": "Implementación de soluciones eficientes para la gestión del estado de aplicaciones."
     },
     "api": {
-      "name": "Integración de APIs",
+      "name": "APIs",
       "tech": "REST, GraphQL, WebSockets",
       "description": "Desarrollo e integración de APIs para comunicación entre servicios."
     },
     "performance": {
-      "name": "Optimización",
+      "name": "Rendimiento",
       "tech": "Lazy Loading, Code Splitting, SSR",
       "description": "Mejora del rendimiento y la experiencia del usuario en aplicaciones web."
     },
     "agile": {
-      "name": "Metodologías Ágiles",
+      "name": "Ágil",
       "tech": "Scrum, Kanban, Jira",
       "description": "Gestión de proyectos con metodologías ágiles para entrega eficiente."
     },
     "web3": {
-      "name": "Desarrollo Blockchain",
+      "name": "Web3",
       "tech": "Solidity, Ethereum, Smart Contracts, DeFi",
       "description": "Desarrollo de aplicaciones descentralizadas (dApps) y contratos inteligentes para ecosistemas blockchain."
     },
     "ai": {
-      "name": "IA y Automatización",
+      "name": "IA & Auto",
       "tech": "Python, TensorFlow, NLP, Automatización",
       "description": "Implementación de soluciones basadas en inteligencia artificial y automatización de procesos para optimizar flujos de trabajo."
     }
@@ -150,29 +185,37 @@
 
   "services": {
     "title": "Servicios",
+    "chapter": "05",
+    "headingTitle": "servicios.",
     "web": {
-      "title": "Desarrollo Web Full Stack",
-      "description": "Creación de aplicaciones web completas, desde el frontend hasta el backend, utilizando las tecnologías más modernas y eficientes del mercado."
+      "tag": "stack",
+      "title": "Full Stack Web",
+      "description": "Apps web completas, frontend a backend, tooling moderno y atención al detalle."
     },
     "backend": {
-      "title": "Desarrollo Backend",
-      "description": "Construcción de APIs robustas, servicios escalables y optimización de bases de datos para garantizar el rendimiento y la seguridad."
+      "tag": "core",
+      "title": "Backend & APIs",
+      "description": "Servicios robustos, diseño de DB y APIs construidas para escalar con seguridad."
     },
     "api": {
+      "tag": "integración",
       "title": "Integración de APIs",
-      "description": "Desarrollo e integración de APIs para conectar diferentes servicios y sistemas, asegurando una comunicación eficiente entre componentes."
+      "description": "Conectar sistemas, webhooks, servicios de terceros — que las cosas se comuniquen bien."
     },
     "responsive": {
-      "title": "Diseño Responsivo",
-      "description": "Creación de interfaces adaptables a todos los dispositivos, garantizando una experiencia de usuario óptima en móviles, tablets y escritorio."
+      "tag": "diseño",
+      "title": "UI Responsiva",
+      "description": "Interfaces que se ven bien en todo — móvil, tablet, desktop, sin excepciones."
     },
     "web3": {
-      "title": "Desarrollo Blockchain",
-      "description": "Creación de contratos inteligentes, tokens personalizados y aplicaciones descentralizadas (dApps) para ecosistemas blockchain como Ethereum."
+      "tag": "web3",
+      "title": "Smart Contracts",
+      "description": "Solidity, dApps, tokens custom y DeFi básico en ecosistemas Ethereum."
     },
     "ai": {
-      "title": "IA y Automatización",
-      "description": "Implementación de soluciones basadas en inteligencia artificial y automatización de procesos para optimizar operaciones y mejorar la eficiencia empresarial."
+      "tag": "ia & auto",
+      "title": "Flujos con IA",
+      "description": "Pipelines de automatización, integraciones LLM y agentes para trabajo repetible."
     }
   },
 
@@ -182,49 +225,16 @@
   },
   "personalProjects": {
     "title": "Proyectos Personales",
+    "chapter": "06",
+    "headingTitle": "proyectos.",
     "github": "GitHub",
-    "liveDemo": "Demo en Vivo",
-    "projects": {
-      "ecommerce": {
-        "title": "Plataforma E-commerce",
-        "description": "Tienda online completa con carrito de compras, pasarela de pagos y panel de administración.",
-        "tags": ["React", "Node.js", "MongoDB", "Stripe", "Redux"]
-      },
-      "taskManager": {
-        "title": "Gestor de Tareas",
-        "description": "Aplicación para gestión de proyectos y tareas con funcionalidades de colaboración en tiempo real.",
-        "tags": ["Next.js", "Firebase", "Tailwind CSS", "React Query"]
-      },
-      "weather": {
-        "title": "Dashboard del Clima",
-        "description": "Aplicación que muestra información meteorológica en tiempo real con visualizaciones interactivas.",
-        "tags": ["React", "OpenWeather API", "Chart.js", "Styled Components"]
-      }
-    }
+    "liveDemo": "Demo en Vivo"
   },
   "collaborations": {
     "title": "Colaboraciones",
-    "viewProject": "Ver Proyecto",
-    "projects": {
-      "openSource": {
-        "title": "Biblioteca de Componentes React",
-        "description": "Contribución a una biblioteca de código abierto de componentes React reutilizables.",
-        "role": "Desarrollador Frontend",
-        "date": "2022"
-      },
-      "hackathon": {
-        "title": "App de Participación Comunitaria",
-        "description": "Desarrollo de una aplicación para fomentar la participación ciudadana en proyectos locales.",
-        "role": "Desarrollador Full Stack",
-        "date": "2021"
-      },
-      "blog": {
-        "title": "Blog Técnico Colaborativo",
-        "description": "Contribución de artículos técnicos sobre desarrollo web moderno y mejores prácticas.",
-        "role": "Autor Técnico",
-        "date": "2020 - Presente"
-      }
-    }
+    "chapter": "07",
+    "headingTitle": "colaboraciones.",
+    "viewProject": "Ver Proyecto"
   },
   
   "contact": {

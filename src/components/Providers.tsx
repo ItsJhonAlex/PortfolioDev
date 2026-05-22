@@ -1,68 +1,50 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { ThemeProvider } from "@/components/ThemeProvider"
-import { ModeToggle } from "@/components/ModeToggle"
-import LanguageSwitcher from "@/components/LanguageSwitcher"
-import { NextIntlClientProvider } from "next-intl"
-import LoadingScreen from "@/components/LoadingScreen"
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { NextIntlClientProvider } from "next-intl";
+import { useEffect, useState } from "react";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { ModeToggle } from "@/components/ModeToggle";
+import { ThemeProvider } from "@/components/ThemeProvider";
+
+type Props = {
+  children: React.ReactNode;
+  locale: string;
+  messages: Record<string, unknown>;
+  timeZone?: string;
+};
 
 export default function Providers({
   children,
   locale,
   messages,
-  timeZone = 'America/Havana',
-}: {
-  children: React.ReactNode
-  locale: string
-  messages: any
-  timeZone?: string
-}) {
-  const [mounted, setMounted] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-  
-  // Efecto para manejar la carga inicial
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-      setMounted(true)
-    }, 1500) // Reducido a 1.5 segundos para mejor UX
-    
-    return () => clearTimeout(timer)
-  }, [])
+  timeZone = "America/Havana",
+}: Props) {
+  const [mounted, setMounted] = useState(false);
 
-  const loadingMessages = {
-    title: messages.loading?.initial?.title || 'Loading',
-    messages: messages.loading?.initial?.messages || []
-  }
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messages} timeZone={timeZone}>
-      <ThemeProvider 
-        attribute="class" 
-        defaultTheme="system" 
-        enableSystem 
+    <NextIntlClientProvider
+      locale={locale}
+      messages={messages}
+      timeZone={timeZone}
+    >
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
         disableTransitionOnChange
       >
-        {/* Pantalla de carga inicial */}
-        <LoadingScreen 
-          isLoading={isLoading} 
-          onLoadingComplete={() => setMounted(true)}
-          type="initial"
-          messages={loadingMessages}
-        />
-        
-
-        
         <div className="min-h-screen">
-          {/* Solo renderizar los controles de tema e idioma cuando el componente está montado */}
           {mounted && (
-            <motion.div 
-              className="fixed top-4 right-4 flex items-center gap-3 z-50"
+            <motion.div
+              className="fixed right-4 top-4 z-50 flex items-center gap-3"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
             >
               <LanguageSwitcher />
               <ModeToggle />
@@ -72,5 +54,5 @@ export default function Providers({
         </div>
       </ThemeProvider>
     </NextIntlClientProvider>
-  )
+  );
 }

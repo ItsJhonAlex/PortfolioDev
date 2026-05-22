@@ -1,92 +1,53 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Users, Calendar, ExternalLink } from "lucide-react"
-import Image from "next/image"
-import AnimatedSectionHeader from "@/components/AnimatedSectionHeader"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl";
+import CollaborationCard from "@/components/CollaborationCard";
+import SectionHeading from "@/components/SectionHeading";
+import { COLLABORATIONS } from "@/data/collaborations";
 
-interface Collaboration {
-  key: string
-  image: string
-  link: string
-}
-
-const collaborations: Collaboration[] = [
-  {
-    key: "openSource",
-    image: "/placeholder.svg?height=300&width=400",
-    link: "https://github.com/open-source-library/react-components",
-  },
-  {
-    key: "hackathon",
-    image: "/placeholder.svg?height=300&width=400",
-    link: "https://devpost.com/software/community-engagement-app",
-  },
-  {
-    key: "blog",
-    image: "/placeholder.svg?height=300&width=400",
-    link: "https://tech-blog-example.com/authors/usman-zafar",
-  },
-]
+const ROTATIONS = [1.5, -1.5, 1, -2, 1.2, -1];
+const TAPE_RHYTHM: { showTape: boolean; tapePosition: "left" | "center" }[] = [
+  { showTape: false, tapePosition: "left" },
+  { showTape: true, tapePosition: "center" },
+  { showTape: true, tapePosition: "left" },
+];
 
 export default function Collaborations() {
-  const t = useTranslations('collaborations')
+  const t = useTranslations("collaborations");
+  const locale = useLocale();
+  const collabLocale = locale === "es" ? "es" : "en";
 
   return (
-    <section id="collaborations" className="py-20 overflow-hidden relative">
-      <div className="container mx-auto px-6 relative z-10">
-        <AnimatedSectionHeader title={t('title')} />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {collaborations.map((collab, index) => (
-            <motion.div
-              key={index}
-              className="rounded-xl shadow-lg overflow-hidden card-backdrop card-hover"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Image
-                src={collab.image || "/placeholder.svg"}
-                alt={t(`projects.${collab.key}.title`)}
-                width={400}
-                height={300}
-                className="w-full h-48 object-cover"
+    <section
+      id="collaborations"
+      aria-labelledby="collaborations-title"
+      className="border-dashed-coffee relative overflow-hidden bg-cafe-base py-24 text-cafe-ink"
+    >
+      <div className="container relative z-10 mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+        <SectionHeading chapter={t("chapter")} title={t("headingTitle")} />
+
+        <span id="collaborations-title" className="sr-only">
+          {t("title")}
+        </span>
+
+        <div className="mt-14 grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          {COLLABORATIONS.map((collab, i) => {
+            const tape = TAPE_RHYTHM[i % TAPE_RHYTHM.length];
+            return (
+              <CollaborationCard
+                key={collab.slug}
+                collaboration={collab}
+                locale={collabLocale}
+                rotation={ROTATIONS[i % ROTATIONS.length]}
+                showTape={tape.showTape}
+                tapePosition={tape.tapePosition}
+                viewProjectLabel={t("viewProject")}
+                index={i}
               />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 dark:text-white">
-                  {t(`projects.${collab.key}.title`)}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {t(`projects.${collab.key}.description`)}
-                </p>
-                <div className="flex items-center mb-2">
-                  <Users className="w-5 h-5 mr-2 text-blue-500" />
-                  <span className="text-gray-600 dark:text-gray-300">
-                    {t(`projects.${collab.key}.role`)}
-                  </span>
-                </div>
-                <div className="flex items-center mb-4">
-                  <Calendar className="w-5 h-5 mr-2 text-blue-500" />
-                  <span className="text-gray-600 dark:text-gray-300">
-                    {t(`projects.${collab.key}.date`)}
-                  </span>
-                </div>
-                <a
-                  href={collab.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center text-blue-600 dark:text-blue-400 hover:underline"
-                >
-                  <ExternalLink className="w-5 h-5 mr-2" />
-                  {t('viewProject')}
-                </a>
-              </div>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
-  )
+  );
 }
