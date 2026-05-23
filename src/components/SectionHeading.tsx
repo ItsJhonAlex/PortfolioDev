@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useFadeVariants } from "@/lib/animations";
 
 type Props = {
   chapter: string;
@@ -9,24 +10,13 @@ type Props = {
   className?: string;
 };
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const reducedFade = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-};
-
 export default function SectionHeading({
   chapter,
   title,
   align = "left",
   className = "",
 }: Props) {
-  const reduceMotion = useReducedMotion();
-  const variants = reduceMotion ? reducedFade : fadeUp;
+  const variants = useFadeVariants();
 
   return (
     <motion.div

@@ -1,38 +1,14 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
+
+const BASE_URL = "https://itsjhonalex.is-a.dev";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://itsjhonalex.is-a.dev'
-  
   return {
-    rules: [
-      {
-        userAgent: '*',
-        allow: '/',
-        disallow: [
-          '/api/',
-          '/_next/',
-          '/admin/',
-          '*.pdf$',
-        ],
-      },
-      {
-        userAgent: 'Googlebot',
-        allow: '/',
-        disallow: [
-          '/api/',
-          '/admin/',
-        ],
-      },
-      {
-        userAgent: 'Bingbot',
-        allow: '/',
-        disallow: [
-          '/api/',
-          '/admin/',
-        ],
-      }
-    ],
-    sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
-  }
-} 
+    rules: {
+      userAgent: "*",
+      allow: "/",
+      disallow: ["/api/", "/admin/"],
+    },
+    sitemap: `${BASE_URL}/sitemap.xml`,
+  };
+}

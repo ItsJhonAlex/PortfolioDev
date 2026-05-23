@@ -7,16 +7,7 @@ import NowPlaying from "@/components/hero/NowPlaying";
 import SocialIcons from "@/components/hero/SocialIcons";
 import StatusPill from "@/components/hero/StatusPill";
 import StickyNote from "@/components/hero/StickyNote";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const reducedFade = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-};
+import { useFadeVariants } from "@/lib/animations";
 
 export default function Hero() {
   const t = useTranslations("hero");
@@ -25,7 +16,7 @@ export default function Hero() {
 
   const cvPath =
     locale === "es" ? "/ItsJhonAlex_cv_es.pdf" : "/ItsJhonAlex_cv_en.pdf";
-  const variants = reduceMotion ? reducedFade : fadeUp;
+  const variants = useFadeVariants();
 
   return (
     <section

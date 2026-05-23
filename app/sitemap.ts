@@ -1,48 +1,21 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
+import { locales } from "@/config";
+
+const BASE_URL = "https://itsjhonalex.is-a.dev";
+const LAST_MODIFIED = new Date("2026-05-23");
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://itsjhonalex.is-a.dev'
-  
-  // Rutas principales en ambos idiomas
-  const routes = [
-    '',
-    '/es',
-    '/en'
-  ]
-
-  // Generar entradas del sitemap
-  const sitemapEntries: MetadataRoute.Sitemap = routes.map(route => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: route === '' || route === '/es' || route === '/en' ? 1 : 0.8,
-  }))
-
-  // Agregar secciones específicas con anchors para mejor indexación
-  const sections = [
-    '#hero',
-    '#about', 
-    '#experience',
-    '#skills',
-    '#services',
-    '#projects',
-    '#collaborations',
-    '#education',
-    '#contact'
-  ]
-
-  // Agregar las secciones para cada idioma
-  const languages: string[] = ['es', 'en']
-  languages.forEach((lang: string) => {
-    sections.forEach((section: string) => {
-      sitemapEntries.push({
-        url: `${baseUrl}/${lang}${section}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.6,
-      })
-    })
-  })
-
-  return sitemapEntries
-} 
+  return locales.map((locale) => ({
+    url: `${BASE_URL}/${locale}`,
+    lastModified: LAST_MODIFIED,
+    changeFrequency: "monthly",
+    priority: 1,
+    alternates: {
+      languages: {
+        es: `${BASE_URL}/es`,
+        en: `${BASE_URL}/en`,
+        "x-default": `${BASE_URL}/en`,
+      },
+    },
+  }));
+}

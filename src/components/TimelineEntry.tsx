@@ -45,7 +45,7 @@ export default function TimelineEntry({
         className="grid grid-cols-[76px_1fr] items-center gap-4 sm:grid-cols-[96px_1fr]"
       >
         <div className="relative pr-5 text-right">
-          <span className="font-mono text-[10px] uppercase tracking-wider text-cafe-border">
+          <span className="font-mono text-[10px] uppercase tracking-wider text-cafe-mute">
             ???
           </span>
           <span
@@ -53,7 +53,7 @@ export default function TimelineEntry({
             className="absolute right-[-7px] top-1/2 h-3.5 w-3.5 -translate-y-1/2 rounded-full border-[2px] border-cafe-border bg-cafe-base"
           />
         </div>
-        <div className="ml-4 font-hand text-lg text-cafe-border">
+        <div className="ml-4 font-hand text-lg text-cafe-mute">
           {futureLabel}
         </div>
       </motion.li>
@@ -74,7 +74,7 @@ export default function TimelineEntry({
     >
       {/* Year column with dot */}
       <div className="relative pr-5 pt-4 text-right">
-        <span className="font-mono text-[11px] uppercase tracking-wider text-cafe-accent">
+        <span className="whitespace-nowrap font-mono text-[11px] uppercase tracking-wider text-cafe-accent">
           {yearLabel}
         </span>
         <motion.span

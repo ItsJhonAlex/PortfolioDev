@@ -1,11 +1,12 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Code, Database, Server, Zap } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import SectionHeading from "@/components/SectionHeading";
 import SkillCard, { type StickyColor } from "@/components/SkillCard";
+import { useFadeVariants } from "@/lib/animations";
 
 type SkillKey = "frontend" | "backend" | "database" | "performance";
 
@@ -24,20 +25,9 @@ const SKILLS: SkillConfig[] = [
   { key: "performance", Icon: Zap, iconColorClass: "text-amber-600", variant: "blue", rotation: 2 },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const reducedFade = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-};
-
 export default function About() {
   const t = useTranslations("about");
-  const reduceMotion = useReducedMotion();
-  const itemVariants = reduceMotion ? reducedFade : fadeUp;
+  const itemVariants = useFadeVariants();
 
   return (
     <section

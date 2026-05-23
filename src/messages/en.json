@@ -1,10 +1,4 @@
 {
-  "navigation": {
-    "home": "Home",
-    "about": "About",
-    "projects": "Projects",
-    "contact": "Contact"
-  },
   "nav": {
     "home": "Home",
     "hero": "Home",
@@ -17,13 +11,23 @@
     "education": "Education",
     "contact": "Contact"
   },
+  "controls": {
+    "skipToContent": "Skip to content",
+    "changeLanguage": "Change language",
+    "toggleTheme": "Toggle theme",
+    "language": {
+      "es": "Spanish",
+      "en": "English"
+    },
+    "theme": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    }
+  },
   "metadata": {
     "title": "Jonathan Rodríguez López - Full Stack Developer | React, Node.js, Python",
     "description": "Portfolio of Jonathan Rodríguez López, Full Stack Developer specialized in React, Node.js, Python, Web3 and Blockchain. Professional web development services in Havana, Cuba. Expertise in automation, AI and APIs."
-  },
-  "home": {
-    "title": "Welcome to my Portfolio",
-    "description": "I'm a software developer passionate about creating amazing web experiences"
   },
   "hero": {
     "title": "Jonathan Rodríguez López",
@@ -77,11 +81,13 @@
   },
   "education": {
     "title": "Education",
+    "chapter": "08",
+    "headingTitle": "education.",
     "keyAchievements": "Key Achievements",
     "degree": {
       "title": "Computer Science Engineering",
       "institution": "University of Havana",
-      "period": "2015 - 2020",
+      "period": "2020",
       "achievements": [
         "Specialization in software development and information systems",
         "Final project focused on web solutions for process automation",
@@ -234,84 +240,18 @@
     "viewProject": "View Project"
   },
   "contact": {
-    "info": "Info",
-    "location": "Havana, Cuba",
     "title": "Contact",
-    "name": "Name",
-    "email": "Email",
-    "subject": "Subject",
-    "message": "Message",
-    "send": "Send Message",
-    "sending": "Sending...",
-    "success": "Message sent successfully! I'll get back to you soon.",
-    "nameError": "Name must be at least 2 characters",
-    "emailError": "Please enter a valid email address",
-    "subjectError": "Subject must be at least 5 characters",
-    "messageError": "Message must be at least 10 characters",
-    "decorative": "Decorative background"
-  },
-  "loading": {
-    "initial": {
-      "title": "Loading",
-      "messages": [
-        "Initializing...",
-        "Loading components...",
-        "Setting up environment...",
-        "Almost there...",
-        "Ready!"
-      ]
-    },
-    "languageChange": {
-      "title": "Switching to English",
-      "messages": [
-        "Loading translations...",
-        "Updating content...",
-        "Applying changes...",
-        "Finalizing...",
-        "Complete!"
-      ]
-    },
-    "themeChange": {
-      "light": {
-        "title": "Switching to Light Theme",
-        "messages": [
-          "Adjusting colors...",
-          "Updating interface...",
-          "Applying theme...",
-          "Finalizing...",
-          "Done!"
-        ]
-      },
-      "dark": {
-        "title": "Switching to Dark Theme",
-        "messages": [
-          "Adjusting colors...",
-          "Updating interface...",
-          "Applying theme...",
-          "Finalizing...",
-          "Done!"
-        ]
-      },
-      "system": {
-        "title": "Switching to System Theme",
-        "messages": [
-          "Detecting preferences...",
-          "Updating interface...",
-          "Applying theme...",
-          "Finalizing...",
-          "Done!"
-        ]
-      }
-    },
-    "refresh": {
-      "title": "Reloading Page",
-      "messages": [
-        "Updating data...",
-        "Loading resources...",
-        "Preparing content...",
-        "Almost ready...",
-        "Complete!"
-      ]
-    }
+    "chapter": "09",
+    "headingTitle": "contact.",
+    "metaLeft": "jhonalex / havana",
+    "metaRight": "open inbox",
+    "letterHeading": "Let's grab a (virtual) coffee.",
+    "letterBody": "Got a project in mind, want to collaborate, or just feel like saying hi? My inbox is open. I usually reply within a day or two.",
+    "emailLabel": "email",
+    "locationLabel": "location",
+    "locationValue": "Havana, Cuba · GMT-5",
+    "openEmail": "Open email",
+    "signClosing": "— Sincerely,",
+    "signName": "jhon ✿"
   }
 }

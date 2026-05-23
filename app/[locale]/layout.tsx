@@ -1,11 +1,10 @@
-import {useMessages} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {Metadata} from 'next';
 import Providers from '@/components/Providers';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import {Inter, Fraunces, JetBrains_Mono, Caveat} from "next/font/google"
 import {locales} from '@/config';
-import {setRequestLocale} from 'next-intl/server';
+import {getTranslations, setRequestLocale} from 'next-intl/server';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,7 +33,7 @@ const caveat = Caveat({
 
 type Props = {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 export function generateStaticParams() {
@@ -152,7 +151,7 @@ export async function generateMetadata({
 
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
-  
+
   // Validate that the incoming `locale` parameter is valid
   if (!locales.includes(locale as any)) notFound();
 
@@ -160,6 +159,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
 
   const messages = await import(`@/messages/${locale}.json`);
+  const t = await getTranslations({ locale, namespace: "controls" });
 
   return (
     <html
@@ -168,10 +168,9 @@ export default async function LocaleLayout({ children, params }: Props) {
       suppressHydrationWarning
     >
       <head>
-        <link rel="icon" href="/favico.png" type="image/png" />
-        <link rel="shortcut icon" href="/favico.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/favico.png" />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Jonathan Portfolio" />
@@ -179,6 +178,12 @@ export default async function LocaleLayout({ children, params }: Props) {
         <meta name="theme-color" content="#f1ebe1" />
       </head>
       <body className="min-h-screen" suppressHydrationWarning>
+        <a
+          href="#main"
+          className="focus-cafe sr-only z-50 rounded-sm bg-cafe-ink px-4 py-2 font-mono text-sm text-cafe-base shadow-cafe-lg focus:not-sr-only focus:absolute focus:left-4 focus:top-4"
+        >
+          {t("skipToContent")}
+        </a>
         <GoogleAnalytics GA_TRACKING_ID={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
         <Providers locale={locale} messages={messages.default} timeZone="America/Havana">
           {children}

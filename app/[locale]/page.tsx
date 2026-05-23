@@ -1,24 +1,32 @@
-import Hero from "@/sections/Hero"
-import FloatingNav from "@/components/FloatingNav"
-import StructuredData from "@/components/StructuredData"
-import ClientSections from "@/components/ClientSections"
-import { getTranslations } from 'next-intl/server'
+import { getTranslations } from "next-intl/server";
+import FloatingNav from "@/components/FloatingNav";
+import Sections from "@/components/Sections";
+import StructuredData from "@/components/StructuredData";
+import Hero from "@/sections/Hero";
 
-export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params
-  const t = await getTranslations()
-  
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations();
+
   return (
-    <main className="min-h-screen bg-background">
-      <StructuredData 
+    <main
+      id="main"
+      tabIndex={-1}
+      className="min-h-screen bg-cafe-base focus:outline-none"
+    >
+      <StructuredData
         locale={locale}
-        heroDescription={t('hero.description')}
-        heroRole={t('hero.role')}
-        metadataDescription={t('metadata.description')}
+        heroDescription={t("hero.description")}
+        heroRole={t("hero.role")}
+        metadataDescription={t("metadata.description")}
       />
       <FloatingNav />
       <Hero />
-      <ClientSections />
+      <Sections />
     </main>
-  )
+  );
 }

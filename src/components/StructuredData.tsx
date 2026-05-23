@@ -22,7 +22,7 @@ export default function StructuredData({
     "alternateName": "Jonathan Alejandro",
     "description": heroDescription,
     "url": baseUrl,
-    "image": `${baseUrl}/profile-image.jpg`,
+    "image": `${baseUrl}/profile.png`,
     "sameAs": [
       "https://github.com/ItsJhonAlex",
       "https://linkedin.com/in/itsjhonalex",

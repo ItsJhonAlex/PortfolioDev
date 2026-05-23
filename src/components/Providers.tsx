@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { NextIntlClientProvider } from "next-intl";
+import { type AbstractIntlMessages, NextIntlClientProvider } from "next-intl";
 import { useEffect, useState } from "react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { ModeToggle } from "@/components/ModeToggle";
@@ -10,7 +10,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 type Props = {
   children: React.ReactNode;
   locale: string;
-  messages: Record<string, unknown>;
+  messages: AbstractIntlMessages;
   timeZone?: string;
 };
 
