@@ -1,71 +1,43 @@
-# Mi Portfolio Profesional
+# Astro Starter Kit: Minimal
 
-## 📋 Descripción
-
-Este es mi portfolio profesional desarrollado con tecnologías modernas para mostrar mis habilidades, experiencia y proyectos. Diseñado con un enfoque en la experiencia de usuario, accesibilidad y rendimiento.
-
-## 🚀 Tecnologías
-
-- **Framework**: [Next.js](https://nextjs.org/) con App Router
-- **Estilización**: [Tailwind CSS](https://tailwindcss.com/) con [shadcn/ui](https://ui.shadcn.com/)
-- **Animaciones**: [Framer Motion](https://www.framer.com/motion/)
-- **Internacionalización**: [next-intl](https://next-intl-docs.vercel.app/) (Español e Inglés)
-- **Tema**: Sistema de tema claro/oscuro con [next-themes](https://github.com/pacocoursey/next-themes)
-
-## ✨ Características
-
-- **Diseño Responsivo**: Adaptado para todos los dispositivos
-- **Multilenguaje**: Soporte completo para español e inglés
-- **Tema Oscuro/Claro**: Cambio de tema según preferencia del usuario
-- **Animaciones**: Efectos visuales al hacer scroll
-- **Componentes Reutilizables**: Arquitectura modular y mantenible
-
-## 🏗️ Estructura del Proyecto
-
-El portfolio incluye las siguientes secciones:
-
-- **Hero**: Presentación inicial
-- **About**: Información personal y profesional
-- **Experience**: Experiencia laboral
-- **Skills**: Habilidades técnicas
-- **Services**: Servicios ofrecidos
-- **PersonalProjects**: Proyectos personales destacados
-- **Collaborations**: Proyectos en colaboración
-- **Education**: Formación académica
-- **Contact**: Información de contacto
-
-## 🛠️ Instalación y Uso
-
-1. Clona este repositorio:
-```bash
-git clone <url-del-repositorio>
+```sh
+bun create astro@latest -- --template minimal
 ```
 
-2. Instala las dependencias:
-```bash
-pnpm install
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
 ```
 
-3. Ejecuta el servidor de desarrollo:
-```bash
-pnpm dev
-```
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-4. Abre http://localhost:3000 en tu navegador.
-## 📦 Construcción para Producción
-```bash
-pnpm build
-```
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-## 🧪 Ejecutar Tests
-```bash
-pnpm test
-```
+Any static assets, like images, can be placed in the `public/` directory.
 
-## 📝 Licencia
-MIT
+## 🧞 Commands
 
-## 📞 Contacto
-- Email : [ tu-email@ejemplo.com ]
-- LinkedIn : [Tu perfil de LinkedIn]
-- GitHub : [Tu perfil de GitHub]
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `bun install`             | Installs dependencies                            |
+| `bun dev`             | Starts local dev server at `localhost:4321`      |
+| `bun build`           | Build your production site to `./dist/`          |
+| `bun preview`         | Preview your build locally, before deploying     |
+| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `bun astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
