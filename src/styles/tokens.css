@@ -1,0 +1,26 @@
+/* Design tokens — dark is the default theme on :root */
+:root {
+  --bg: #08080b;
+  --bg2: #0d0d15;
+  --surface: #121219;
+  --text: #f4f4f7;
+  --muted: #9090a2;
+  --border: rgba(255,255,255,.09);
+  --accent: #7c5cff;
+  --accent2: #a78bfa;
+  --accent-soft: rgba(124,92,255,.14);
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Light theme overrides */
+:root[data-theme="light"] {
+  --bg: #f5f4f9;
+  --bg2: #ecebf3;
+  --surface: #ffffff;
+  --text: #15151c;
+  --muted: #5b5b6a;
+  --border: rgba(0,0,0,.10);
+  --accent-soft: rgba(124,92,255,.10);
+}

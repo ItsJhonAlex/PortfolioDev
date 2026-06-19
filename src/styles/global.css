@@ -1,0 +1,192 @@
+/* Self-hosted fonts via fontsource — @import must precede all other rules */
+@import '@fontsource/space-grotesk/400.css';
+@import '@fontsource/space-grotesk/500.css';
+@import '@fontsource/space-grotesk/600.css';
+@import '@fontsource/space-grotesk/700.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+@import '@fontsource/instrument-serif/400.css';
+@import '@fontsource/instrument-serif/400-italic.css';
+
+/* ── Minimal reset ────────────────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Selection ────────────────────────────────────────────────────────────── */
+::selection { background: rgba(124,92,255,.32); color: #fff; }
+
+/* ── Custom scrollbars — neon rail + glossy thumb ─────────────────────────── */
+html { scrollbar-width: thin; scrollbar-color: #8f72ff transparent; }
+
+::-webkit-scrollbar { width: 15px; height: 15px; }
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(
+    90deg,
+    transparent calc(50% - 1px),
+    rgba(124,92,255,.16) calc(50% - 1px),
+    rgba(124,92,255,.16) calc(50% + 1px),
+    transparent calc(50% + 1px)
+  );
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #b9a4ff, #7c5cff 48%, #6d3fff);
+  border-radius: 999px;
+  border: 4px solid transparent;
+  background-clip: padding-box;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.45),
+    inset 0 0 0 1px rgba(255,255,255,.10),
+    0 0 12px rgba(124,92,255,.65);
+  transition: background .2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #cdbcff, #8f72ff 48%, #7c5cff);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.55),
+    inset 0 0 0 1px rgba(255,255,255,.14),
+    0 0 20px rgba(124,92,255,.95);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #a78bfa, #6d3fff);
+}
+
+::-webkit-scrollbar-corner { background: transparent; }
+
+[data-modal-panel] { scrollbar-width: thin; scrollbar-color: #8f72ff transparent; }
+
+[data-modal-panel]::-webkit-scrollbar { width: 13px; }
+
+[data-modal-panel]::-webkit-scrollbar-track {
+  background: linear-gradient(
+    90deg,
+    transparent calc(50% - 1px),
+    rgba(124,92,255,.16) calc(50% - 1px),
+    rgba(124,92,255,.16) calc(50% + 1px),
+    transparent calc(50% + 1px)
+  );
+}
+
+[data-modal-panel]::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #b9a4ff, #7c5cff 48%, #6d3fff);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.45),
+    inset 0 0 0 1px rgba(255,255,255,.10),
+    0 0 10px rgba(124,92,255,.6);
+}
+
+[data-modal-panel]::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #cdbcff, #8f72ff 48%, #7c5cff);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.55),
+    inset 0 0 0 1px rgba(255,255,255,.14),
+    0 0 18px rgba(124,92,255,.9);
+}
+
+/* ── Keyframes ────────────────────────────────────────────────────────────── */
+@keyframes pf-auroraA {
+  0%   { transform: translate(0,0) scale(1); }
+  50%  { transform: translate(8%,6%) scale(1.18); }
+  100% { transform: translate(0,0) scale(1); }
+}
+
+@keyframes pf-auroraB {
+  0%   { transform: translate(0,0) scale(1.1); }
+  50%  { transform: translate(-10%,-4%) scale(.9); }
+  100% { transform: translate(0,0) scale(1.1); }
+}
+
+@keyframes pf-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pf-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes pf-blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .35; transform: scale(.7); }
+}
+
+@keyframes pf-floaty {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes pf-rise {
+  from { opacity: 0; transform: translateY(115%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pf-shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes pf-fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Skip link (visually hidden until focused) ───────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  padding: .5rem 1rem;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: .875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 .375rem 0;
+  transition: top .2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ── Focus visible ────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Reduced motion ───────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
