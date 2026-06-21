@@ -1,0 +1,52 @@
+---
+interface Props {
+  label: string;
+  items: string[];
+  delay?: number;
+}
+
+const { label, items, delay } = Astro.props;
+---
+
+<div
+  data-reveal
+  data-stack-card
+  class="stack-card"
+  {...delay !== undefined ? { 'data-reveal-delay': delay } : {}}
+>
+  <div class="stack-card-label">{label}</div>
+  <div class="stack-card-chips">
+    {items.map((item) => <span class="chip">{item}</span>)}
+  </div>
+</div>
+
+<style>
+  .stack-card {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--surface);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, background 0.4s;
+  }
+
+  .stack-card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent2);
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+  }
+
+  .stack-card-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+  }
+
+  .chip {
+    padding: 7px 13px;
+    border-radius: 9px;
+    background: var(--accent-soft);
+    font-size: 14px;
+  }
+</style>

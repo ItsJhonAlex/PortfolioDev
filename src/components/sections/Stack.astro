@@ -1,0 +1,79 @@
+---
+import { useTranslations } from '../../i18n/ui';
+import type { UIKey } from '../../i18n/ui';
+import type { Locale } from '../../i18n/utils';
+import { stackDomains } from '../../data/stack';
+import StackCard from '../ui/StackCard.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Staggered delays mirroring source: 0, 80, 160, 0, 80, 160
+const delays = [undefined, 80, 160, undefined, 80, 160];
+
+function resolveItems(domain: (typeof stackDomains)[number]): string[] {
+  if (domain.labelKey === 'stack.l6') {
+    return domain.items.map((key) => t(key as UIKey));
+  }
+  return domain.items;
+}
+---
+
+<section id="stack" class="stack">
+  <div data-reveal class="stack-header">
+    <h2 class="stack-title">{t('stack.title')}</h2>
+    <span class="stack-sub">{t('stack.sub')}</span>
+  </div>
+  <div class="stack-grid">
+    {stackDomains.map((domain, i) => (
+      <StackCard
+        label={t(domain.labelKey)}
+        items={resolveItems(domain)}
+        delay={delays[i]}
+      />
+    ))}
+  </div>
+</section>
+
+<style>
+  .stack {
+    position: relative;
+    z-index: 2;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: clamp(40px, 8vh, 90px) clamp(20px, 5vw, 64px) clamp(80px, 12vh, 140px);
+  }
+
+  .stack-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 54px;
+  }
+
+  .stack-title {
+    margin: 0;
+    font-size: clamp(34px, 5vw, 68px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .stack-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
+  }
+</style>
