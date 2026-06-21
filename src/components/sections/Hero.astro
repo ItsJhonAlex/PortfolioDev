@@ -119,11 +119,12 @@ const [firstName, secondName] = site.name.split(' ');
   .line-wrap {
     display: block;
     overflow: hidden;
-    /* The clip box gets extra room at the bottom so italic descenders (the
-       "j" in Alejandro) aren't cut off; the negative margin keeps the visual
-       line spacing unchanged. */
-    padding-bottom: 0.12em;
-    margin-bottom: -0.12em;
+    /* Instrument Serif's italic "j"/"g" have deep descenders; the clip box
+       needs generous bottom room so they aren't cut off. The negative margin
+       only partially cancels it, leaving a little real space before the
+       tagline so the descender never collides with it. */
+    padding-bottom: 0.32em;
+    margin-bottom: -0.2em;
   }
 
   .line-inner {

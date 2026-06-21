@@ -67,8 +67,15 @@ const t = useTranslations(lang);
     align-items: center;
     justify-content: space-between;
     padding: 20px clamp(20px, 5vw, 64px);
-    backdrop-filter: blur(10px);
-    background: linear-gradient(180deg, rgba(8, 8, 11, 0.72), transparent);
+    /* No backdrop-filter: combined with the page's mix-blend layers it caused
+       a ghosted "double" render (astigmatism look). A theme-aware translucent
+       gradient keeps the bar legible over scrolling content instead. */
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--bg) 94%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 60%, transparent) 58%,
+      transparent 100%
+    );
   }
 
   .pf-nav__logo {
