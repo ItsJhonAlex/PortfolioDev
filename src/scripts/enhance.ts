@@ -467,6 +467,38 @@ function initModal(): void {
 // ---------------------------------------------------------------------------
 // init — top-level orchestrator
 // ---------------------------------------------------------------------------
+/**
+ * Mobile nav: the hamburger toggles the collapsed link panel. Closes on link
+ * click, Escape, and when the viewport grows back to desktop width.
+ */
+function initMobileNav(): void {
+  const nav = document.querySelector<HTMLElement>('.pf-nav');
+  const burger = document.getElementById('pf-nav-burger');
+  const menu = document.getElementById('pf-nav-menu');
+  if (!nav || !burger || !menu) return;
+
+  const setOpen = (open: boolean): void => {
+    nav.dataset.open = open ? 'true' : '';
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+
+  burger.addEventListener('click', () => {
+    setOpen(burger.getAttribute('aria-expanded') !== 'true');
+  });
+
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+
+  matchMedia('(min-width: 769px)').addEventListener('change', (e) => {
+    if (e.matches) setOpen(false);
+  });
+}
+
 function init(): void {
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const pointerFine = matchMedia('(pointer:fine)').matches;
@@ -478,6 +510,7 @@ function init(): void {
   initScrollspy();
   initGrain();
   initModal();
+  initMobileNav();
 
   if (pointerFine && !reducedMotion) {
     initCursorGlowAndAurora();

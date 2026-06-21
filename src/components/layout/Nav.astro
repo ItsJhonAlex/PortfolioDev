@@ -15,9 +15,11 @@ const t = useTranslations(lang);
   </a>
 
   <div class="pf-nav__right">
-    <a href="#trabajo" class="pf-nav__link" data-nav-link>{t('nav.work')}</a>
-    <a href="#stack"   class="pf-nav__link" data-nav-link>{t('nav.stack')}</a>
-    <a href="#contacto" class="pf-nav__link" data-nav-link>{t('nav.contact')}</a>
+    <div class="pf-nav__links" id="pf-nav-menu">
+      <a href="#trabajo" class="pf-nav__link" data-nav-link>{t('nav.work')}</a>
+      <a href="#stack"   class="pf-nav__link" data-nav-link>{t('nav.stack')}</a>
+      <a href="#contacto" class="pf-nav__link" data-nav-link>{t('nav.contact')}</a>
+    </div>
 
     <div class="pf-nav__lang-picker" role="group" aria-label="Language">
       <a
@@ -40,6 +42,17 @@ const t = useTranslations(lang);
       aria-label="Toggle colour theme"
       type="button"
     >◐</button>
+
+    <button
+      id="pf-nav-burger"
+      class="pf-nav__burger"
+      aria-label="Menú"
+      aria-expanded="false"
+      aria-controls="pf-nav-menu"
+      type="button"
+    >
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -82,10 +95,16 @@ const t = useTranslations(lang);
   .pf-nav__right {
     display: flex;
     align-items: center;
-    gap: clamp(16px, 3vw, 38px);
+    gap: clamp(14px, 2vw, 24px);
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
     letter-spacing: 0.3px;
+  }
+
+  .pf-nav__links {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 3vw, 38px);
   }
 
   .pf-nav__link {
@@ -96,6 +115,42 @@ const t = useTranslations(lang);
 
   .pf-nav__link:hover {
     color: var(--text);
+  }
+
+  /* Hamburger — hidden on desktop, shown on small screens. */
+  .pf-nav__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    width: 34px;
+    height: 34px;
+    padding: 0 8px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .pf-nav__burger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+
+  .pf-nav[data-open='true'] .pf-nav__burger span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .pf-nav[data-open='true'] .pf-nav__burger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .pf-nav[data-open='true'] .pf-nav__burger span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
   }
 
   .pf-nav__lang-picker {
@@ -149,5 +204,53 @@ const t = useTranslations(lang);
 
   .pf-nav__theme-btn:hover {
     background: var(--surface);
+  }
+
+  /* ---- Mobile: collapse the section links into a dropdown panel ---- */
+  @media (max-width: 768px) {
+    .pf-nav {
+      padding: 14px clamp(20px, 5vw, 64px);
+    }
+
+    .pf-nav__burger {
+      display: flex;
+    }
+
+    .pf-nav__links {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: clamp(20px, 5vw, 64px);
+      right: clamp(20px, 5vw, 64px);
+      flex-direction: column;
+      align-items: stretch;
+      gap: 2px;
+      padding: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.65);
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .pf-nav[data-open='true'] .pf-nav__links {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .pf-nav__link {
+      padding: 12px 14px;
+      border-radius: 9px;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .pf-nav__link:hover,
+    .pf-nav__link[data-active='1'] {
+      background: var(--bg2);
+    }
   }
 </style>
