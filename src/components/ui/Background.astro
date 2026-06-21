@@ -1,0 +1,147 @@
+---
+import { site } from '../../config/site';
+import type { Locale } from '../../i18n/utils';
+
+interface Props { lang: Locale; }
+const { lang } = Astro.props;
+
+const edgeRight = `${site.location[lang]} · 2026`;
+---
+
+<!-- scroll progress -->
+<div id="pf-progress" aria-hidden="true"></div>
+
+<!-- cursor glow -->
+<div id="pf-glow" aria-hidden="true"></div>
+
+<!-- aurora field -->
+<div id="pf-aurora" aria-hidden="true">
+  <div data-depth="0.05"></div>
+  <div data-depth="0.09"></div>
+  <div data-depth="0.04"></div>
+</div>
+
+<!-- film grain -->
+<div data-grain aria-hidden="true"></div>
+
+<!-- editorial edge labels -->
+<div data-edge aria-hidden="true" class="edge-left">{site.role}</div>
+<div data-edge aria-hidden="true" class="edge-right">{edgeRight}</div>
+
+<style>
+  #pf-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    z-index: 120;
+    box-shadow: 0 0 14px var(--accent);
+  }
+
+  #pf-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 380px;
+    height: 380px;
+    margin: -190px 0 0 -190px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-soft), transparent 62%);
+    filter: blur(8px);
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    mix-blend-mode: screen;
+  }
+
+  #pf-aurora {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  #pf-aurora [data-depth="0.05"] {
+    position: absolute;
+    top: -12%;
+    left: -8%;
+    width: 48vw;
+    height: 48vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124, 92, 255, 0.30), transparent 65%);
+    filter: blur(40px);
+    animation: pf-auroraA 18s ease-in-out infinite;
+  }
+
+  #pf-aurora [data-depth="0.09"] {
+    position: absolute;
+    bottom: -18%;
+    right: -10%;
+    width: 52vw;
+    height: 52vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(167, 139, 250, 0.22), transparent 64%);
+    filter: blur(46px);
+    animation: pf-auroraB 22s ease-in-out infinite;
+  }
+
+  #pf-aurora [data-depth="0.04"] {
+    position: absolute;
+    top: 38%;
+    right: 24%;
+    width: 26vw;
+    height: 26vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.18), transparent 66%);
+    filter: blur(38px);
+    animation: pf-auroraA 26s ease-in-out infinite;
+  }
+
+  [data-grain] {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-size: 120px 120px;
+  }
+
+  [data-edge] {
+    position: fixed;
+    bottom: 42px;
+    z-index: 95;
+    pointer-events: none;
+    writing-mode: vertical-rl;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .edge-left {
+    left: 20px;
+    transform: rotate(180deg);
+  }
+
+  .edge-right {
+    right: 20px;
+  }
+
+  @keyframes pf-auroraA {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(3%, 5%) scale(1.05); }
+    66% { transform: translate(-2%, 3%) scale(0.97); }
+  }
+
+  @keyframes pf-auroraB {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-4%, -3%) scale(1.03); }
+    66% { transform: translate(3%, -5%) scale(1.06); }
+  }
+</style>

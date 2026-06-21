@@ -1,0 +1,60 @@
+---
+import '../styles/tokens.css';
+import '../styles/global.css';
+import BaseHead from '../components/seo/BaseHead.astro';
+import Background from '../components/ui/Background.astro';
+import Nav from '../components/layout/Nav.astro';
+import Footer from '../components/layout/Footer.astro';
+import type { Locale } from '../i18n/utils';
+
+interface Props { lang: Locale; title: string; description: string; path?: string; }
+const { lang, title, description, path = '/' } = Astro.props;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <BaseHead lang={lang} title={title} description={description} path={path} />
+    <script is:inline>
+      (() => { try { const t = localStorage.getItem('pf-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {} })();
+    </script>
+  </head>
+  <body>
+    <a href="#top" class="skip-link">Saltar al contenido</a>
+    <div id="pf-root">
+      <Background lang={lang} />
+      <Nav lang={lang} />
+      <main id="top"><slot /></main>
+      <Footer lang={lang} />
+    </div>
+    <script>import '../scripts/enhance.ts';</script>
+  </body>
+</html>
+
+<style>
+  #pf-root {
+    position: relative;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    overflow-x: clip;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    z-index: 200;
+    padding: 8px 16px;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    text-decoration: none;
+    transition: top 0.2s;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+</style>
