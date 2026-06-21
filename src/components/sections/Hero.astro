@@ -25,7 +25,7 @@ const [firstName, secondName] = site.name.split(' ');
     <span class="line-wrap">
       <span data-line class="line-inner">{firstName}</span>
     </span>
-    <span class="line-wrap">
+    <span class="line-wrap line-wrap--last">
       <span data-line data-line-delay="120" class="line-inner line-serif">{secondName}</span>
     </span>
   </h1>
@@ -119,12 +119,14 @@ const [firstName, secondName] = site.name.split(' ');
   .line-wrap {
     display: block;
     overflow: hidden;
-    /* Instrument Serif's italic "j"/"g" have deep descenders; the clip box
-       needs generous bottom room so they aren't cut off. The negative margin
-       only partially cancels it, leaving a little real space before the
-       tagline so the descender never collides with it. */
-    padding-bottom: 0.32em;
-    margin-bottom: -0.2em;
+  }
+
+  /* The second line is the italic Instrument Serif word ("Alejandro"), whose
+     "j" has a deep descender. The reveal mask (overflow:hidden) would clip it,
+     so this line gets real bottom room — enough for the tail to show fully and
+     stay clear of the tagline below. No negative margin: this is genuine space. */
+  .line-wrap--last {
+    padding-bottom: 0.34em;
   }
 
   .line-inner {
