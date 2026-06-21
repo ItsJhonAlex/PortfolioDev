@@ -1,0 +1,96 @@
+---
+import { useTranslations } from '../../i18n/ui';
+import type { Locale } from '../../i18n/utils';
+import { projectsBase, projectsCopy } from '../../data/projects';
+import ProjectCard from '../ui/ProjectCard.astro';
+import ProjectModal from '../ui/ProjectModal.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const mergedProjects = projectsBase.map((base, i) => {
+  const copy = projectsCopy[lang][i];
+  return {
+    num: base.num,
+    cat: copy.cat,
+    title: copy.title,
+    year: copy.year,
+    role: copy.role,
+    overview: copy.overview,
+    stack: base.stack,
+    banner: base.banner,
+    live: base.live,
+    repo: base.repo,
+  };
+});
+
+const revealDelays = [undefined, 100, 200];
+---
+
+<section id="trabajo" class="projects">
+  <div data-reveal class="projects-header">
+    <h2 class="projects-title">{t('projects.title')}</h2>
+    <span class="projects-sub">{t('projects.sub')}</span>
+  </div>
+
+  <div class="projects-grid">
+    {mergedProjects.map((project, i) => (
+      <ProjectCard
+        index={i}
+        num={project.num}
+        banner={project.banner}
+        title={project.title}
+        desc={project.overview}
+        stack={project.stack}
+        revealDelay={revealDelays[i]}
+      />
+    ))}
+  </div>
+
+  <ProjectModal lang={lang} />
+
+  <script type="application/json" id="pf-projects" is:inline set:html={JSON.stringify(mergedProjects)} />
+</section>
+
+<style>
+  .projects {
+    position: relative;
+    z-index: 2;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: clamp(40px, 8vh, 90px) clamp(20px, 5vw, 64px) clamp(80px, 12vh, 140px);
+  }
+
+  .projects-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 54px;
+  }
+
+  .projects-title {
+    margin: 0;
+    font-size: clamp(34px, 5vw, 68px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .projects-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: 20px;
+  }
+</style>

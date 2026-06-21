@@ -1,0 +1,249 @@
+---
+import { useTranslations } from '../../i18n/ui';
+import type { Locale } from '../../i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div data-modal aria-modal="true" role="dialog" class="modal">
+  <div data-modal-backdrop class="modal-backdrop"></div>
+  <div data-modal-panel class="modal-panel">
+    <button data-modal-close aria-label="Cerrar" class="modal-close">✕</button>
+
+    <div data-m-banner class="modal-banner">
+      <div class="modal-banner-shine"></div>
+      <span data-m-num class="modal-banner-num">01</span>
+    </div>
+
+    <div class="modal-content">
+      <div data-m-cat class="modal-cat">Plataforma web</div>
+      <h3 data-m-title class="modal-title">Nombre del proyecto</h3>
+
+      <div class="modal-meta">
+        <div>
+          <div class="modal-meta-label">{t('modal.year')}</div>
+          <div data-m-year class="modal-meta-value">2025</div>
+        </div>
+        <div>
+          <div class="modal-meta-label">{t('modal.role')}</div>
+          <div data-m-role class="modal-meta-value">Full-Stack · Diseño & Desarrollo</div>
+        </div>
+      </div>
+
+      <div class="modal-section-label">{t('modal.overview')}</div>
+      <p data-m-overview class="modal-overview">Descripción del proyecto.</p>
+
+      <div class="modal-section-label">{t('modal.stack')}</div>
+      <div data-m-stack class="modal-stack"></div>
+
+      <div class="modal-actions">
+        <a data-m-live href="#" target="_blank" rel="noopener" data-magnetic class="modal-btn-live">
+          <span class="modal-btn-icon">▸</span>
+          <span>{t('modal.live')}</span>
+        </a>
+        <a data-m-repo href="#" target="_blank" rel="noopener" data-magnetic class="modal-btn-repo">
+          <span>{t('modal.repo')}</span>
+          <span class="modal-btn-icon">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(14px, 4vw, 48px);
+  }
+
+  .modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(4, 4, 8, 0.72);
+    backdrop-filter: blur(9px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .modal-panel {
+    position: relative;
+    width: min(740px, 100%);
+    max-height: 88vh;
+    overflow: auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    box-shadow: 0 40px 120px -20px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transform: translateY(26px) scale(0.97);
+    transition:
+      opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    background: rgba(8, 8, 11, 0.55);
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    backdrop-filter: blur(4px);
+    transition:
+      transform 0.25s,
+      background 0.25s;
+  }
+
+  .modal-banner {
+    position: relative;
+    aspect-ratio: 16 / 8;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 22px 22px 0 0;
+    background: linear-gradient(135deg, rgba(124, 92, 255, 0.34), rgba(167, 139, 250, 0.1));
+  }
+
+  .modal-banner-shine {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.12), transparent 60%);
+  }
+
+  .modal-banner-num {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: clamp(60px, 13vw, 128px);
+    color: #fff;
+    opacity: 0.92;
+    line-height: 1;
+  }
+
+  .modal-content {
+    padding: clamp(24px, 4vw, 42px);
+  }
+
+  .modal-cat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: var(--accent2);
+    text-transform: uppercase;
+    margin-bottom: 13px;
+  }
+
+  .modal-title {
+    margin: 0;
+    font-size: clamp(28px, 4.4vw, 46px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+  }
+
+  .modal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px;
+    margin: 28px 0;
+    padding: 22px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .modal-meta-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 7px;
+  }
+
+  .modal-meta-value {
+    font-size: 16px;
+  }
+
+  .modal-section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 13px;
+  }
+
+  .modal-overview {
+    margin: 0 0 30px;
+    font-size: clamp(15px, 1.6vw, 17px);
+    line-height: 1.6;
+    color: var(--muted);
+    text-wrap: pretty;
+  }
+
+  .modal-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 32px;
+  }
+
+  .modal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .modal-btn-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 14px 24px;
+    border-radius: 12px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: 0 8px 30px -8px var(--accent);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .modal-btn-repo {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 14px 24px;
+    border-radius: 12px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    transition:
+      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.3s;
+  }
+
+  .modal-btn-icon {
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>

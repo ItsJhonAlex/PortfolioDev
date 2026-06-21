@@ -1,0 +1,120 @@
+---
+interface Props {
+  index: number;
+  num: string;
+  banner: string;
+  title: string;
+  desc: string;
+  stack: string[];
+  revealDelay?: number;
+}
+
+const { index, num, banner, title, desc, stack, revealDelay } = Astro.props;
+---
+
+<a
+  href="#"
+  data-tilt
+  data-reveal
+  data-project-index={index}
+  class="project-card"
+  {...(revealDelay !== undefined ? { 'data-reveal-delay': revealDelay } : {})}
+>
+  <div class="project-banner" style={`background:${banner}`}>
+    <div class="project-banner-shine"></div>
+    <span class="project-num">{num}</span>
+  </div>
+  <div class="project-body">
+    <div class="project-title-row">
+      <h3 class="project-title">{title}</h3>
+      <span class="project-arrow">↗</span>
+    </div>
+    <p class="project-desc">{desc}</p>
+    <div class="project-chips">
+      {stack.map((tech) => <span class="chip">{tech}</span>)}
+    </div>
+  </div>
+</a>
+
+<style>
+  .project-card {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--surface);
+    transition: border-color 0.4s;
+    transform-style: preserve-3d;
+  }
+
+  .project-banner {
+    aspect-ratio: 16 / 10;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-banner-shine {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.12), transparent 60%);
+  }
+
+  .project-num {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: clamp(40px, 6vw, 72px);
+    opacity: 0.85;
+  }
+
+  .project-body {
+    padding: 24px 26px 28px;
+  }
+
+  .project-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .project-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .project-arrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    color: var(--accent2);
+  }
+
+  .project-desc {
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  .project-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .chip {
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+  }
+</style>
