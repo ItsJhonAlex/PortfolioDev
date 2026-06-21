@@ -1,0 +1,209 @@
+---
+import { useTranslations } from '../../i18n/ui';
+import type { Locale } from '../../i18n/utils';
+import { site } from '../../config/site';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const [firstName, secondName] = site.name.split(' ');
+---
+
+<header id="top" class="hero">
+  <div data-reveal class="hero-badge">
+    <span class="badge-dot"></span>
+    <span>{t('hero.badge')}</span>
+    <span class="badge-sep">·</span>
+    <span data-clock class="badge-clock">--:--</span>
+  </div>
+
+  <h1 class="hero-headline">
+    <span class="line-wrap">
+      <span data-line class="line-inner">{firstName}</span>
+    </span>
+    <span class="line-wrap">
+      <span data-line data-line-delay="120" class="line-inner line-serif">{secondName}</span>
+    </span>
+  </h1>
+
+  <p data-reveal data-reveal-delay="320" class="hero-tagline" set:html={t('hero.tagline')} />
+
+  <div data-reveal data-reveal-delay="440" class="hero-ctas">
+    <a href="#trabajo" data-magnetic class="cta-primary">
+      <span>{t('hero.cta1')}</span>
+      <span class="cta-arrow">↘</span>
+    </a>
+    <a href="#contacto" data-magnetic class="cta-secondary">
+      <span>{t('hero.cta2')}</span>
+    </a>
+    <a href={site.cv} download data-magnetic class="cta-secondary">
+      <span class="cta-arrow">↓</span>
+      <span>{t('hero.cv')}</span>
+    </a>
+  </div>
+
+  <div class="scroll-cue">
+    <span>SCROLL</span>
+    <span class="scroll-line"></span>
+  </div>
+</header>
+
+<style>
+  .hero {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px clamp(20px, 5vw, 64px) 80px;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  /* Badge */
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    align-self: flex-start;
+    padding: 7px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 34px;
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #36e2a0;
+    box-shadow: 0 0 10px #36e2a0;
+    animation: pf-blink 1.8s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  .badge-sep {
+    opacity: 0.4;
+  }
+
+  .badge-clock {
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+
+  /* Headline */
+  .hero-headline {
+    margin: 0;
+    font-weight: 700;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    font-size: clamp(58px, 12vw, 168px);
+  }
+
+  .line-wrap {
+    display: block;
+    overflow: hidden;
+  }
+
+  .line-inner {
+    display: inline-block;
+    animation: pf-rise 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .line-serif {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0;
+    background: linear-gradient(100deg, var(--accent), var(--accent2), var(--accent));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: pf-rise 1s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both,
+               pf-shimmer 6s linear infinite;
+  }
+
+  /* Tagline */
+  .hero-tagline {
+    max-width: 620px;
+    margin: 30px 0 0;
+    font-size: clamp(18px, 2vw, 23px);
+    line-height: 1.5;
+    color: var(--muted);
+    text-wrap: pretty;
+  }
+
+  /* CTAs */
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 42px;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 15px 26px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cta-primary {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 8px 30px -8px var(--accent);
+  }
+
+  .cta-secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-weight: 500;
+    transition:
+      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.3s;
+  }
+
+  .cta-arrow {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Scroll cue */
+  .scroll-cue {
+    position: absolute;
+    bottom: 38px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    animation: pf-floaty 2.6s ease-in-out infinite;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 34px;
+    background: linear-gradient(var(--muted), transparent);
+  }
+</style>

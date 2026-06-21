@@ -1,0 +1,72 @@
+---
+import { marqueeItems } from '../../config/site';
+import type { Locale } from '../../i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+// lang prop accepted for API consistency; marquee content is not translated
+const { lang: _lang } = Astro.props;
+---
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <!-- First copy -->
+    <span class="marquee-group">
+      {marqueeItems.map((item, i) => (
+        <>
+          <span class={i % 2 === 0 ? 'marquee-item marquee-item--hi' : 'marquee-item'}>{item}</span>
+          <span class="marquee-sep">✦</span>
+        </>
+      ))}
+    </span>
+    <!-- Second copy (aria-hidden for screen readers) -->
+    <span class="marquee-group" aria-hidden="true">
+      {marqueeItems.map((item, i) => (
+        <>
+          <span class={i % 2 === 0 ? 'marquee-item marquee-item--hi' : 'marquee-item'}>{item}</span>
+          <span class="marquee-sep">✦</span>
+        </>
+      ))}
+    </span>
+  </div>
+</div>
+
+<style>
+  .marquee-wrap {
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    overflow: hidden;
+    padding: 18px 0;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 0;
+    animation: pf-marquee 30s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee-group {
+    display: flex;
+    gap: 42px;
+    padding-right: 42px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .marquee-item--hi {
+    color: var(--text);
+  }
+
+  .marquee-sep {
+    color: var(--accent2);
+  }
+</style>
