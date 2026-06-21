@@ -4,21 +4,26 @@ import { Schema } from 'astro-seo-schema';
 import { site } from '../../config/site';
 import { localizePath, type Locale } from '../../i18n/utils';
 
-interface Props { lang: Locale; title: string; description: string; path?: string; }
-const { lang, title, description, path = '/' } = Astro.props;
+interface Props { lang: Locale; title: string; description: string; path?: string; noindex?: boolean; }
+const { lang, title, description, path = '/', noindex = false } = Astro.props;
 const canonical = new URL(localizePath(path, lang), site.url).href;
 const ogImage = new URL('/og-image.jpg', site.url).href;
 ---
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="alternate" hreflang="es" href={new URL(localizePath(path,'es'), site.url).href} />
-<link rel="alternate" hreflang="en" href={new URL(localizePath(path,'en'), site.url).href} />
-<link rel="alternate" hreflang="x-default" href={new URL(localizePath(path,'es'), site.url).href} />
+{!noindex && (
+  <>
+    <link rel="alternate" hreflang="es" href={new URL(localizePath(path,'es'), site.url).href} />
+    <link rel="alternate" hreflang="en" href={new URL(localizePath(path,'en'), site.url).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL(localizePath(path,'es'), site.url).href} />
+  </>
+)}
 <SEO
   title={title}
   description={description}
   canonical={canonical}
+  noindex={noindex}
   openGraph={{ basic: { title, type: 'website', image: ogImage, url: canonical } }}
   twitter={{ card: 'summary_large_image' }}
 />

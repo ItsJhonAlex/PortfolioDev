@@ -18,7 +18,7 @@ export const ui = {
     'contact.label': '( HABLEMOS )',
     'contact.title': `¿Tienes una <span style="${grad}">idea</span>?`,
     'contact.body': 'Estoy disponible para nuevos proyectos. Escríbeme y construimos algo que valga la pena.',
-    'modal.year': 'Año', 'modal.role': 'Rol', 'modal.overview': 'Resumen', 'modal.stack': 'Stack', 'modal.live': 'Ver en vivo', 'modal.repo': 'Código',
+    'modal.year': 'Año', 'modal.role': 'Rol', 'modal.overview': 'Resumen', 'modal.stack': 'Stack', 'modal.live': 'Ver en vivo', 'modal.repo': 'Código', 'modal.close': 'Cerrar',
     'footer.right': 'Habana, Cuba · Full-Stack Developer',
   },
   en: {
@@ -35,7 +35,7 @@ export const ui = {
     'contact.label': "( LET'S TALK )",
     'contact.title': `Got an <span style="${grad}">idea</span>?`,
     'contact.body': "I'm available for new projects. Write to me and let's build something worthwhile.",
-    'modal.year': 'Year', 'modal.role': 'Role', 'modal.overview': 'Overview', 'modal.stack': 'Stack', 'modal.live': 'View live', 'modal.repo': 'Code',
+    'modal.year': 'Year', 'modal.role': 'Role', 'modal.overview': 'Overview', 'modal.stack': 'Stack', 'modal.live': 'View live', 'modal.repo': 'Code', 'modal.close': 'Close',
     'footer.right': 'Havana, Cuba · Full-Stack Developer',
   },
 } satisfies Record<Locale, Record<string, string>>;
