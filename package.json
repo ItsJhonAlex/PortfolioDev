@@ -12,7 +12,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "playwright test"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
@@ -22,5 +23,8 @@
     "astro": "^6.4.7",
     "astro-seo": "^1.1.0",
     "astro-seo-schema": "^6.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.0"
   }
 }
