@@ -1,0 +1,22 @@
+---
+import type { Locale } from '../i18n/utils';
+import Hero from './sections/Hero.astro';
+import Marquee from './sections/Marquee.astro';
+import About from './sections/About.astro';
+import Stack from './sections/Stack.astro';
+import Projects from './sections/Projects.astro';
+import Contact from './sections/Contact.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+---
+
+<Hero lang={lang} />
+<Marquee lang={lang} />
+<About lang={lang} />
+<Stack lang={lang} />
+<Projects lang={lang} />
+<Contact lang={lang} />

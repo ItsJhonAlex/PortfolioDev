@@ -1,4 +1,8 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Portfolio from '../components/Portfolio.astro';
 const lang = 'es';
 ---
-<html lang={lang}><body><h1>ES OK</h1></body></html>
+<BaseLayout lang={lang} path="/" title="Jhon Alejandro — Desarrollador Full-Stack" description="Desarrollador Full-Stack. Del concepto al deploy: interfaces que emocionan, backends que aguantan y código limpio.">
+  <Portfolio lang={lang} />
+</BaseLayout>
