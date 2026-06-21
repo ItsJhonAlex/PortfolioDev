@@ -1,7 +1,29 @@
 ---
 import type { Locale } from '../../i18n/utils';
+import { useTranslations } from '../../i18n/ui';
+import { site } from '../../config/site';
 
 interface Props { lang: Locale; }
-const { lang: _lang } = Astro.props;
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
-<footer></footer>
+
+<footer class="pf-footer">
+  <span>© 2026 — {site.name}</span>
+  <span>{t('footer.right')}</span>
+</footer>
+
+<style>
+  .pf-footer {
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 24px clamp(20px, 5vw, 64px);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+</style>

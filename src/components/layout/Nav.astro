@@ -1,7 +1,153 @@
 ---
 import type { Locale } from '../../i18n/utils';
+import { localizePath } from '../../i18n/utils';
+import { useTranslations } from '../../i18n/ui';
+import { site } from '../../config/site';
 
 interface Props { lang: Locale; }
-const { lang: _lang } = Astro.props;
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
-<nav></nav>
+
+<nav class="pf-nav">
+  <a href="#top" class="pf-nav__logo" aria-label={site.initials}>
+    <span class="pf-nav__logo-box">{site.initials}</span>
+  </a>
+
+  <div class="pf-nav__right">
+    <a href="#trabajo" class="pf-nav__link" data-nav-link>{t('nav.work')}</a>
+    <a href="#stack"   class="pf-nav__link" data-nav-link>{t('nav.stack')}</a>
+    <a href="#contacto" class="pf-nav__link" data-nav-link>{t('nav.contact')}</a>
+
+    <div class="pf-nav__lang-picker" role="group" aria-label="Language">
+      <a
+        href={localizePath('/', 'es')}
+        class="pf-nav__lang-btn"
+        aria-current={lang === 'es' ? 'true' : undefined}
+        hreflang="es"
+      >ES</a>
+      <a
+        href={localizePath('/', 'en')}
+        class="pf-nav__lang-btn pf-nav__lang-btn--sep"
+        aria-current={lang === 'en' ? 'true' : undefined}
+        hreflang="en"
+      >EN</a>
+    </div>
+
+    <button
+      id="pf-theme-toggle"
+      class="pf-nav__theme-btn"
+      aria-label="Toggle colour theme"
+      type="button"
+    >◐</button>
+  </div>
+</nav>
+
+<style>
+  .pf-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px clamp(20px, 5vw, 64px);
+    backdrop-filter: blur(10px);
+    background: linear-gradient(180deg, rgba(8, 8, 11, 0.72), transparent);
+  }
+
+  .pf-nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .pf-nav__logo-box {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    background: var(--accent-soft);
+  }
+
+  .pf-nav__right {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 3vw, 38px);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+  }
+
+  .pf-nav__link {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+
+  .pf-nav__link:hover {
+    color: var(--text);
+  }
+
+  .pf-nav__lang-picker {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    overflow: hidden;
+  }
+
+  .pf-nav__lang-btn {
+    padding: 7px 9px;
+    background: transparent;
+    border: 0;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    transition: background 0.25s, color 0.25s;
+    text-decoration: none;
+  }
+
+  .pf-nav__lang-btn--sep {
+    border-left: 1px solid var(--border);
+  }
+
+  .pf-nav__lang-btn[aria-current='true'] {
+    background: var(--accent-soft);
+    color: var(--text);
+  }
+
+  .pf-nav__lang-btn:hover:not([aria-current='true']) {
+    background: var(--surface);
+    color: var(--text);
+  }
+
+  .pf-nav__theme-btn {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.25s;
+  }
+
+  .pf-nav__theme-btn:hover {
+    background: var(--surface);
+  }
+</style>
