@@ -18,8 +18,42 @@ interface ProjectData {
   overview: string;
   stack: string[];
   banner: string;
-  live: string;
-  repo: string;
+  live?: string;
+  repo?: string;
+}
+
+/** Profile root is contact-only. Project actions need a real project URL. */
+const GITHUB_PROFILE = 'https://github.com/ItsJhonAlex';
+
+function isProjectLink(url: string | undefined): url is string {
+  if (!url) return false;
+  const trimmed = url.trim();
+  if (!trimmed || trimmed === '#' || trimmed.startsWith('#')) return false;
+
+  let parsed: URL;
+  try {
+    parsed = new URL(trimmed);
+  } catch {
+    return false;
+  }
+
+  if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return false;
+
+  const profilePath = new URL(GITHUB_PROFILE).pathname.replace(/\/+$/, '');
+  const path = parsed.pathname.replace(/\/+$/, '');
+  return !(parsed.hostname === 'github.com' && path === profilePath);
+}
+
+function setModalLink(el: HTMLAnchorElement | null, url: string | undefined): boolean {
+  if (!el) return false;
+  if (!isProjectLink(url)) {
+    el.removeAttribute('href');
+    el.hidden = true;
+    return false;
+  }
+  el.href = url;
+  el.hidden = false;
+  return true;
 }
 
 // ---------------------------------------------------------------------------
@@ -335,7 +369,7 @@ function initModal(): void {
   const getFocusable = (): HTMLElement[] =>
     Array.from(
       modal.querySelectorAll<HTMLElement>(
-        'a[href],button:not([disabled]),input,textarea,select,[tabindex]:not([tabindex="-1"])',
+        'a[href]:not([hidden]),button:not([disabled]):not([hidden]),input:not([hidden]),textarea:not([hidden]),select:not([hidden]),[tabindex]:not([tabindex="-1"]):not([hidden])',
       ),
     );
 
@@ -373,8 +407,13 @@ function initModal(): void {
     const bannerEl = modal.querySelector<HTMLElement>('[data-m-banner]');
     if (bannerEl) bannerEl.style.background = project.banner;
 
+    const hasStack = project.stack.length > 0;
+    const stackLabel = modal.querySelector<HTMLElement>('[data-m-stack-label]');
+    if (stackLabel) stackLabel.hidden = !hasStack;
+
     const stackEl = modal.querySelector<HTMLElement>('[data-m-stack]');
     if (stackEl) {
+      stackEl.hidden = !hasStack;
       // Build chip elements via DOM APIs — avoids innerHTML XSS risk even
       // though the data is build-time static (stack strings may contain
       // characters like '<' that would be misinterpreted as markup).
@@ -389,11 +428,16 @@ function initModal(): void {
       );
     }
 
-    const liveEl = modal.querySelector<HTMLAnchorElement>('[data-m-live]');
-    if (liveEl) liveEl.href = project.live;
-
-    const repoEl = modal.querySelector<HTMLAnchorElement>('[data-m-repo]');
-    if (repoEl) repoEl.href = project.repo;
+    const showLive = setModalLink(
+      modal.querySelector<HTMLAnchorElement>('[data-m-live]'),
+      project.live,
+    );
+    const showRepo = setModalLink(
+      modal.querySelector<HTMLAnchorElement>('[data-m-repo]'),
+      project.repo,
+    );
+    const actions = modal.querySelector<HTMLElement>('[data-m-actions]');
+    if (actions) actions.hidden = !showLive && !showRepo;
 
     // Show modal.
     previousFocus = document.activeElement as HTMLElement | null;

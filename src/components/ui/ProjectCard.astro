@@ -12,8 +12,8 @@ interface Props {
 const { index, num, banner, title, desc, stack, revealDelay } = Astro.props;
 ---
 
-<a
-  href="#"
+<button
+  type="button"
   data-tilt
   data-reveal
   data-project-index={index}
@@ -34,14 +34,20 @@ const { index, num, banner, title, desc, stack, revealDelay } = Astro.props;
       {stack.map((tech) => <span class="chip">{tech}</span>)}
     </div>
   </div>
-</a>
+</button>
 
 <style>
   .project-card {
     position: relative;
     display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    text-align: left;
     text-decoration: none;
     color: inherit;
+    cursor: pointer;
     border: 1px solid var(--border);
     border-radius: 20px;
     overflow: hidden;
