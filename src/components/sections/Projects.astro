@@ -28,7 +28,7 @@ const mergedProjects = projectsBase.map((base, i) => {
   };
 });
 
-const revealDelays = [undefined, 100, 200];
+const revealDelays = mergedProjects.map((_, i) => (i === 0 ? undefined : i * 100));
 ---
 
 <section id="trabajo" class="projects">

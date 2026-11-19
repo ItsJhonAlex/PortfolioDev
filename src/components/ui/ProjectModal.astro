@@ -21,32 +21,32 @@ const t = useTranslations(lang);
     </div>
 
     <div class="modal-content">
-      <div data-m-cat class="modal-cat">Plataforma web</div>
-      <h3 data-m-title class="modal-title">Nombre del proyecto</h3>
+      <div data-m-cat class="modal-cat"></div>
+      <h3 data-m-title class="modal-title"></h3>
 
       <div class="modal-meta">
         <div>
           <div class="modal-meta-label">{t('modal.year')}</div>
-          <div data-m-year class="modal-meta-value">2025</div>
+          <div data-m-year class="modal-meta-value"></div>
         </div>
         <div>
           <div class="modal-meta-label">{t('modal.role')}</div>
-          <div data-m-role class="modal-meta-value">Full-Stack · Diseño & Desarrollo</div>
+          <div data-m-role class="modal-meta-value"></div>
         </div>
       </div>
 
       <div class="modal-section-label">{t('modal.overview')}</div>
-      <p data-m-overview class="modal-overview">Descripción del proyecto.</p>
+      <p data-m-overview class="modal-overview"></p>
 
-      <div class="modal-section-label">{t('modal.stack')}</div>
-      <div data-m-stack class="modal-stack"></div>
+      <div data-m-stack-label hidden class="modal-section-label">{t('modal.stack')}</div>
+      <div data-m-stack hidden class="modal-stack"></div>
 
-      <div class="modal-actions">
-        <a data-m-live href="#" target="_blank" rel="noopener" data-magnetic class="modal-btn-live">
+      <div data-m-actions hidden class="modal-actions">
+        <a data-m-live hidden target="_blank" rel="noopener" data-magnetic class="modal-btn-live">
           <span class="modal-btn-icon">▸</span>
           <span>{t('modal.live')}</span>
         </a>
-        <a data-m-repo href="#" target="_blank" rel="noopener" data-magnetic class="modal-btn-repo">
+        <a data-m-repo hidden target="_blank" rel="noopener" data-magnetic class="modal-btn-repo">
           <span>{t('modal.repo')}</span>
           <span class="modal-btn-icon">↗</span>
         </a>
@@ -209,6 +209,14 @@ const t = useTranslations(lang);
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+  }
+
+  .modal-section-label[hidden],
+  .modal-stack[hidden],
+  .modal-actions[hidden],
+  .modal-btn-live[hidden],
+  .modal-btn-repo[hidden] {
+    display: none;
   }
 
   .modal-btn-live {
